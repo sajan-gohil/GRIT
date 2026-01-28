@@ -50,7 +50,8 @@ def attention_improvement_loss(
     
     # Compute per-graph thresholds and losses
     num_graphs = batch.max().item() + 1
-    loss = torch.tensor(0.0, device=node_embeddings.device, requires_grad=True)
+    total_loss = 0.0
+    valid_graphs = 0
     
     for graph_id in range(num_graphs):
         # Find nodes in this graph
@@ -75,11 +76,15 @@ def attention_improvement_loss(
             graph_loss = -torch.log(soft_recall.mean() + 1e-8)
             
             # Accumulate loss normalized by edge count (implicitly via mean)
-            loss = loss + graph_loss
+            total_loss = total_loss + graph_loss
+            valid_graphs += 1
     
-    # Normalize by number of graphs
-    if num_graphs > 0:
-        loss = loss / num_graphs
+    # Normalize by number of valid graphs
+    if valid_graphs > 0:
+        loss = total_loss / valid_graphs
+    else:
+        # If no valid graphs, return zero loss connected to inputs
+        loss = (initial_scores.sum() + final_scores.sum()) * 0.0
     
     return weight * loss
 
@@ -115,15 +120,12 @@ def structure_reconstruction_loss(
     pos_scores = (node_embeddings[src_idx] * node_embeddings[dst_idx]).sum(dim=-1)
     
     # Sample negative edges (~2x positive samples) from random node pairs in the same graph
-    num_nodes = node_embeddings.size(0)
-    num_pos_edges = edge_index.size(1)
-    num_neg_samples = num_pos_edges * 2
-    
-    # Create a set of existing edges for filtering
+    # Build edge set on CPU once for efficient filtering
+    edge_index_cpu = edge_index.cpu()
     edge_set = set()
-    for i in range(edge_index.size(1)):
-        src = edge_index[0, i].item()
-        dst = edge_index[1, i].item()
+    for i in range(edge_index_cpu.size(1)):
+        src = edge_index_cpu[0, i].item()
+        dst = edge_index_cpu[1, i].item()
         edge_set.add((src, dst))
         edge_set.add((dst, src))  # Also add reverse edge
     
@@ -131,6 +133,7 @@ def structure_reconstruction_loss(
     neg_src_list = []
     neg_dst_list = []
     num_graphs = batch.max().item() + 1
+    device = node_embeddings.device
     
     for graph_id in range(num_graphs):
         # Find nodes in this graph
@@ -148,17 +151,21 @@ def structure_reconstruction_loss(
         # Sample ~2x the number of edges in this graph
         num_graph_neg_samples = num_graph_edges * 2
         
+        # Maximum attempts to prevent infinite loops (10x desired samples)
+        max_attempts = num_graph_neg_samples * 10
+        # Batch size for sampling (chunk size for efficiency)
+        sampling_batch_size = 100
+        
         sampled = 0
-        max_attempts = num_graph_neg_samples * 10  # Prevent infinite loop
         attempts = 0
         
         while sampled < num_graph_neg_samples and attempts < max_attempts:
             # Sample random pairs from the graph
-            batch_size = min(num_graph_neg_samples - sampled, 100)
-            src_samples = graph_nodes[torch.randint(0, num_graph_nodes, (batch_size,))]
-            dst_samples = graph_nodes[torch.randint(0, num_graph_nodes, (batch_size,))]
+            batch_size = min(num_graph_neg_samples - sampled, sampling_batch_size)
+            src_samples = graph_nodes[torch.randint(0, num_graph_nodes, (batch_size,), device=device)]
+            dst_samples = graph_nodes[torch.randint(0, num_graph_nodes, (batch_size,), device=device)]
             
-            for src, dst in zip(src_samples, dst_samples):
+            for src, dst in zip(src_samples.cpu(), dst_samples.cpu()):
                 src_item = src.item()
                 dst_item = dst.item()
                 
@@ -174,10 +181,11 @@ def structure_reconstruction_loss(
     
     # Handle case where we couldn't sample enough negatives
     if len(neg_src_list) == 0:
-        return torch.tensor(0.0, device=node_embeddings.device)
+        # Return zero loss connected to inputs
+        return weight * (pos_scores.sum() * 0.0)
     
-    neg_src_idx = torch.tensor(neg_src_list, dtype=torch.long, device=node_embeddings.device)
-    neg_dst_idx = torch.tensor(neg_dst_list, dtype=torch.long, device=node_embeddings.device)
+    neg_src_idx = torch.tensor(neg_src_list, dtype=torch.long, device=device)
+    neg_dst_idx = torch.tensor(neg_dst_list, dtype=torch.long, device=device)
     
     # Compute similarity scores for negative edges
     neg_scores = (node_embeddings[neg_src_idx] * node_embeddings[neg_dst_idx]).sum(dim=-1)
