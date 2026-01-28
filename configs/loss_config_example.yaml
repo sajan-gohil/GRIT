@@ -1,0 +1,32 @@
+# Example configuration for using auxiliary loss functions
+# Add these settings to your existing config YAML file
+
+# Enable auxiliary losses for transformer training
+loss:
+  # Attention improvement loss
+  attention_improvement:
+    enable: True  # Set to False to disable
+    weight: 0.1   # Weight for this loss component
+    tau: 0.2      # Temperature for sigmoid
+  
+  # Structure reconstruction loss
+  structure_reconstruction:
+    enable: True  # Set to False to disable
+    weight: 0.1   # Weight for this loss component
+
+# Example: To use only attention improvement loss
+# loss:
+#   attention_improvement:
+#     enable: True
+#     weight: 0.5
+#     tau: 0.2
+#   structure_reconstruction:
+#     enable: False
+#     weight: 0.0
+
+# Example: To disable all auxiliary losses (backward compatible)
+# loss:
+#   attention_improvement:
+#     enable: False
+#   structure_reconstruction:
+#     enable: False
