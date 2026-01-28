@@ -37,31 +37,39 @@ def train_epoch(logger, loader, model, optimizer, scheduler, batch_accumulation)
             _pred = pred_score.detach().to('cpu', non_blocking=True)
         
         # Compute auxiliary losses if enabled
+        aux_losses = []
         if hasattr(cfg, 'loss'):
             # Attention improvement loss
-            if cfg.loss.attention_improvement.enable and hasattr(model.model, 'layer_embeddings'):
+            attn_config = getattr(cfg.loss, 'attention_improvement', None)
+            if attn_config and getattr(attn_config, 'enable', False) and hasattr(model.model, 'layer_embeddings'):
                 for emb_dict in model.model.layer_embeddings:
                     attn_loss = attention_improvement_loss(
                         node_embeddings=emb_dict['input_embeddings'],
                         denoised_embeddings=emb_dict['output_embeddings'],
                         edge_index=batch.edge_index,
                         batch=batch.batch,
-                        tau=cfg.loss.attention_improvement.tau,
-                        weight=cfg.loss.attention_improvement.weight
+                        tau=getattr(attn_config, 'tau', 0.2),
+                        weight=getattr(attn_config, 'weight', 1.0)
                     )
-                    loss = loss + attn_loss
+                    aux_losses.append(attn_loss)
             
             # Structure reconstruction loss (use first layer embeddings)
-            if cfg.loss.structure_reconstruction.enable and hasattr(model.model, 'layer_embeddings'):
+            struct_config = getattr(cfg.loss, 'structure_reconstruction', None)
+            if struct_config and getattr(struct_config, 'enable', False) and hasattr(model.model, 'layer_embeddings'):
                 if len(model.model.layer_embeddings) > 0:
                     # Use output of first transformer layer
                     struct_loss = structure_reconstruction_loss(
                         node_embeddings=model.model.layer_embeddings[0]['output_embeddings'],
                         edge_index=batch.edge_index,
                         batch=batch.batch,
-                        weight=cfg.loss.structure_reconstruction.weight
+                        weight=getattr(struct_config, 'weight', 1.0)
                     )
-                    loss = loss + struct_loss
+                    aux_losses.append(struct_loss)
+        
+        # Add auxiliary losses to main loss
+        if aux_losses:
+            total_aux_loss = sum(aux_losses)
+            loss = loss + total_aux_loss
         
         loss.backward()
         # Parameters update after accumulating gradients for given num. batches.

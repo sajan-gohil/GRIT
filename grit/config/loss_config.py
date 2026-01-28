@@ -19,10 +19,10 @@ def set_cfg_loss(cfg):
     # Attention improvement loss settings
     cfg.loss.attention_improvement = CN()
     cfg.loss.attention_improvement.enable = False
-    cfg.loss.attention_improvement.weight = 1.0
+    cfg.loss.attention_improvement.weight = 0.1
     cfg.loss.attention_improvement.tau = 0.2  # Temperature for sigmoid
     
     # Structure reconstruction loss settings
     cfg.loss.structure_reconstruction = CN()
     cfg.loss.structure_reconstruction.enable = False
-    cfg.loss.structure_reconstruction.weight = 1.0
+    cfg.loss.structure_reconstruction.weight = 0.1
