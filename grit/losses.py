@@ -6,7 +6,6 @@ during transformer encoding.
 """
 import torch
 import torch.nn.functional as F
-from torch_geometric.utils import negative_sampling
 
 
 def attention_improvement_loss(
@@ -35,80 +34,57 @@ def attention_improvement_loss(
     if weight == 0.0:
         return torch.tensor(0.0, device=node_embeddings.device)
     
-    # Normalize embeddings for numerical stability
+    # Normalize embeddings using L2 normalization
     node_embeddings = F.normalize(node_embeddings, p=2, dim=-1)
     denoised_embeddings = F.normalize(denoised_embeddings, p=2, dim=-1)
     
-    # Compute similarity matrices for original and denoised embeddings
-    # For positive edges (existing edges)
+    # Compute similarity scores for connected nodes before and after transformation
     src_idx = edge_index[0]
     dst_idx = edge_index[1]
     
-    # Original similarities
-    orig_sim = (node_embeddings[src_idx] * node_embeddings[dst_idx]).sum(dim=-1)
+    # Initial similarity scores
+    initial_scores = (node_embeddings[src_idx] * node_embeddings[dst_idx]).sum(dim=-1)
     
-    # Denoised similarities
-    denoised_sim = (denoised_embeddings[src_idx] * denoised_embeddings[dst_idx]).sum(dim=-1)
+    # Final similarity scores (after transformation)
+    final_scores = (denoised_embeddings[src_idx] * denoised_embeddings[dst_idx]).sum(dim=-1)
     
-    # Sample negative edges (approximately 2x positive edges, or max possible)
-    num_nodes = node_embeddings.size(0)
-    max_possible_neg = (num_nodes * (num_nodes - 1)) - edge_index.size(1)
-    num_neg_samples = min(edge_index.size(1) * 2, max_possible_neg)
-    
-    # Handle case where we can't sample enough negatives
-    if num_neg_samples <= 0:
-        # No negative edges available, return zero loss
-        return torch.tensor(0.0, device=node_embeddings.device)
-    
-    neg_edge_index = negative_sampling(
-        edge_index=edge_index,
-        num_nodes=num_nodes,
-        num_neg_samples=num_neg_samples
-    )
-    
-    neg_src_idx = neg_edge_index[0]
-    neg_dst_idx = neg_edge_index[1]
-    
-    # Negative similarities
-    orig_neg_sim = (node_embeddings[neg_src_idx] * node_embeddings[neg_dst_idx]).sum(dim=-1)
-    denoised_neg_sim = (denoised_embeddings[neg_src_idx] * denoised_embeddings[neg_dst_idx]).sum(dim=-1)
-    
-    # Improvement: denoised should increase positive similarities and decrease negative ones
-    # Positive edges: encourage higher similarity
-    pos_improvement = torch.sigmoid((denoised_sim - orig_sim) / tau)
-    
-    # Negative edges: encourage lower similarity
-    neg_improvement = torch.sigmoid((orig_neg_sim - denoised_neg_sim) / tau)
-    
-    # Compute per-graph loss
+    # Compute per-graph thresholds and losses
     num_graphs = batch.max().item() + 1
-    loss = torch.tensor(0.0, device=node_embeddings.device, requires_grad=True)
+    total_loss = 0.0
+    valid_graphs = 0
     
     for graph_id in range(num_graphs):
         # Find nodes in this graph
         graph_mask = (batch == graph_id)
         
         # Find edges in this graph (both endpoints must be in the graph)
-        pos_edge_mask = graph_mask[src_idx] & graph_mask[dst_idx]
-        neg_edge_mask = graph_mask[neg_src_idx] & graph_mask[neg_dst_idx]
+        edge_mask = graph_mask[src_idx] & graph_mask[dst_idx]
         
-        graph_loss = torch.tensor(0.0, device=node_embeddings.device)
-        
-        if pos_edge_mask.sum() > 0:
-            # Average improvement for positive edges
-            graph_pos_loss = -torch.log(pos_improvement[pos_edge_mask].mean() + 1e-8)
-            graph_loss = graph_loss + graph_pos_loss
-        
-        if neg_edge_mask.sum() > 0:
-            # Average improvement for negative edges
-            graph_neg_loss = -torch.log(neg_improvement[neg_edge_mask].mean() + 1e-8)
-            graph_loss = graph_loss + graph_neg_loss
-        
-        loss = loss + graph_loss
+        if edge_mask.sum() > 0:
+            # Get scores for this graph
+            graph_initial_scores = initial_scores[edge_mask]
+            graph_final_scores = final_scores[edge_mask]
+            
+            # Compute per-graph threshold as mean initial score
+            threshold = graph_initial_scores.mean()
+            
+            # Use sigmoid to compute soft recall based on final score vs threshold
+            # Higher final scores relative to threshold should give higher sigmoid values
+            soft_recall = torch.sigmoid((graph_final_scores - threshold) / tau)
+            
+            # Loss: we want to maximize soft_recall, so minimize negative log
+            graph_loss = -torch.log(soft_recall.mean() + 1e-8)
+            
+            # Accumulate loss normalized by edge count (implicitly via mean)
+            total_loss = total_loss + graph_loss
+            valid_graphs += 1
     
-    # Normalize by number of graphs
-    if num_graphs > 0:
-        loss = loss / num_graphs
+    # Normalize by number of valid graphs
+    if valid_graphs > 0:
+        loss = total_loss / valid_graphs
+    else:
+        # If no valid graphs, return zero loss connected to inputs
+        loss = (initial_scores.sum() + final_scores.sum()) * 0.0
     
     return weight * loss
 
@@ -138,72 +114,98 @@ def structure_reconstruction_loss(
     # Normalize embeddings for numerical stability
     node_embeddings = F.normalize(node_embeddings, p=2, dim=-1)
     
-    # Positive edges
+    # Compute similarity scores for positive (connected) edges
     src_idx = edge_index[0]
     dst_idx = edge_index[1]
-    
-    # Compute similarity for positive edges (should be high)
     pos_scores = (node_embeddings[src_idx] * node_embeddings[dst_idx]).sum(dim=-1)
     
-    # Sample negative edges (~2x positive samples, or max possible)
-    num_nodes = node_embeddings.size(0)
-    max_possible_neg = (num_nodes * (num_nodes - 1)) - edge_index.size(1)
-    num_neg_samples = min(edge_index.size(1) * 2, max_possible_neg)
+    # Sample negative edges (~2x positive samples) from random node pairs in the same graph
+    # Build edge set on CPU once for efficient filtering
+    edge_index_cpu = edge_index.cpu()
+    edge_set = set()
+    for i in range(edge_index_cpu.size(1)):
+        src = edge_index_cpu[0, i].item()
+        dst = edge_index_cpu[1, i].item()
+        edge_set.add((src, dst))
+        edge_set.add((dst, src))  # Also add reverse edge
     
-    # Handle case where we can't sample enough negatives
-    if num_neg_samples <= 0:
-        # No negative edges available, return zero loss
-        return torch.tensor(0.0, device=node_embeddings.device)
-    
-    neg_edge_index = negative_sampling(
-        edge_index=edge_index,
-        num_nodes=num_nodes,
-        num_neg_samples=num_neg_samples
-    )
-    
-    neg_src_idx = neg_edge_index[0]
-    neg_dst_idx = neg_edge_index[1]
-    
-    # Compute similarity for negative edges (should be low)
-    neg_scores = (node_embeddings[neg_src_idx] * node_embeddings[neg_dst_idx]).sum(dim=-1)
-    
-    # Compute per-graph loss with adaptive thresholds
+    # Sample negative edges per graph
+    neg_src_list = []
+    neg_dst_list = []
     num_graphs = batch.max().item() + 1
-    loss = torch.tensor(0.0, device=node_embeddings.device, requires_grad=True)
+    device = node_embeddings.device
     
     for graph_id in range(num_graphs):
         # Find nodes in this graph
         graph_mask = (batch == graph_id)
+        graph_nodes = torch.where(graph_mask)[0]
+        num_graph_nodes = graph_nodes.size(0)
         
-        # Find edges in this graph (both endpoints must be in the graph)
-        pos_edge_mask = graph_mask[src_idx] & graph_mask[dst_idx]
-        neg_edge_mask = graph_mask[neg_src_idx] & graph_mask[neg_dst_idx]
+        if num_graph_nodes < 2:
+            continue
         
-        if pos_edge_mask.sum() > 0 and neg_edge_mask.sum() > 0:
-            # Get scores for this graph
-            graph_pos_scores = pos_scores[pos_edge_mask]
-            graph_neg_scores = neg_scores[neg_edge_mask]
+        # Count edges in this graph
+        edge_mask = graph_mask[src_idx] & graph_mask[dst_idx]
+        num_graph_edges = edge_mask.sum().item()
+        
+        # Sample ~2x the number of edges in this graph
+        num_graph_neg_samples = num_graph_edges * 2
+        
+        # Maximum attempts to prevent infinite loops (10x desired samples)
+        max_attempts = num_graph_neg_samples * 10
+        # Batch size for sampling (chunk size for efficiency)
+        sampling_batch_size = 100
+        
+        sampled = 0
+        attempts = 0
+        
+        while sampled < num_graph_neg_samples and attempts < max_attempts:
+            # Sample random pairs from the graph
+            batch_size = min(num_graph_neg_samples - sampled, sampling_batch_size)
+            src_samples = graph_nodes[torch.randint(0, num_graph_nodes, (batch_size,), device=device)]
+            dst_samples = graph_nodes[torch.randint(0, num_graph_nodes, (batch_size,), device=device)]
             
-            # Binary cross-entropy style loss
-            # Positive edges should have high scores
-            pos_loss = F.binary_cross_entropy_with_logits(
-                graph_pos_scores,
-                torch.ones_like(graph_pos_scores),
-                reduction='mean'
-            )
+            for src, dst in zip(src_samples.cpu(), dst_samples.cpu()):
+                src_item = src.item()
+                dst_item = dst.item()
+                
+                # Filter out self-loops and actual edges
+                if src_item != dst_item and (src_item, dst_item) not in edge_set:
+                    neg_src_list.append(src_item)
+                    neg_dst_list.append(dst_item)
+                    sampled += 1
+                    if sampled >= num_graph_neg_samples:
+                        break
             
-            # Negative edges should have low scores
-            neg_loss = F.binary_cross_entropy_with_logits(
-                graph_neg_scores,
-                torch.zeros_like(graph_neg_scores),
-                reduction='mean'
-            )
-            
-            graph_loss = (pos_loss + neg_loss) / 2.0
-            loss = loss + graph_loss
+            attempts += batch_size
     
-    # Normalize by number of graphs
-    if num_graphs > 0:
-        loss = loss / num_graphs
+    # Handle case where we couldn't sample enough negatives
+    if len(neg_src_list) == 0:
+        # Return zero loss connected to inputs
+        return weight * (pos_scores.sum() * 0.0)
+    
+    neg_src_idx = torch.tensor(neg_src_list, dtype=torch.long, device=device)
+    neg_dst_idx = torch.tensor(neg_dst_list, dtype=torch.long, device=device)
+    
+    # Compute similarity scores for negative edges
+    neg_scores = (node_embeddings[neg_src_idx] * node_embeddings[neg_dst_idx]).sum(dim=-1)
+    
+    # Compute BCE loss comparing sigmoid predictions to target values
+    # For positive edges: target = 1
+    pos_loss = F.binary_cross_entropy_with_logits(
+        pos_scores,
+        torch.ones_like(pos_scores),
+        reduction='mean'
+    )
+    
+    # For negative edges: target = 0
+    neg_loss = F.binary_cross_entropy_with_logits(
+        neg_scores,
+        torch.zeros_like(neg_scores),
+        reduction='mean'
+    )
+    
+    # Return averaged loss across positive and negative samples
+    loss = (pos_loss + neg_loss) / 2.0
     
     return weight * loss
