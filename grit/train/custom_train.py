@@ -12,6 +12,7 @@ from torch_geometric.graphgym.utils.epoch import is_eval_epoch, is_ckpt_epoch
 
 from grit.loss.subtoken_prediction_loss import subtoken_cross_entropy
 from grit.utils import cfg_to_dict, flatten_dict, make_wandb_name, mlflow_log_cfgdict
+from grit.losses import attention_improvement_loss, structure_reconstruction_loss
 import warnings
 from collections import defaultdict
 
@@ -34,6 +35,42 @@ def train_epoch(logger, loader, model, optimizer, scheduler, batch_accumulation)
             loss, pred_score = compute_loss(pred, true)
             _true = true.detach().to('cpu', non_blocking=True)
             _pred = pred_score.detach().to('cpu', non_blocking=True)
+        
+        # Compute auxiliary losses if enabled
+        aux_losses = []
+        if hasattr(cfg, 'loss'):
+            # Attention improvement loss
+            attn_config = getattr(cfg.loss, 'attention_improvement', None)
+            if attn_config and getattr(attn_config, 'enable', False) and hasattr(model.model, 'layer_embeddings'):
+                for emb_dict in model.model.layer_embeddings:
+                    attn_loss = attention_improvement_loss(
+                        node_embeddings=emb_dict['input_embeddings'],
+                        denoised_embeddings=emb_dict['output_embeddings'],
+                        edge_index=batch.edge_index,
+                        batch=batch.batch,
+                        tau=getattr(attn_config, 'tau', 0.2),
+                        weight=getattr(attn_config, 'weight', 1.0)
+                    )
+                    aux_losses.append(attn_loss)
+            
+            # Structure reconstruction loss (use first layer embeddings)
+            struct_config = getattr(cfg.loss, 'structure_reconstruction', None)
+            if struct_config and getattr(struct_config, 'enable', False) and hasattr(model.model, 'layer_embeddings'):
+                if len(model.model.layer_embeddings) > 0:
+                    # Use output of first transformer layer
+                    struct_loss = structure_reconstruction_loss(
+                        node_embeddings=model.model.layer_embeddings[0]['output_embeddings'],
+                        edge_index=batch.edge_index,
+                        batch=batch.batch,
+                        weight=getattr(struct_config, 'weight', 1.0)
+                    )
+                    aux_losses.append(struct_loss)
+        
+        # Add auxiliary losses to main loss
+        if aux_losses:
+            total_aux_loss = sum(aux_losses)
+            loss = loss + total_aux_loss
+        
         loss.backward()
         # Parameters update after accumulating gradients for given num. batches.
         if ((iter + 1) % batch_accumulation == 0) or (iter + 1 == len(loader)):

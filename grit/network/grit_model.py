@@ -60,9 +60,9 @@ class GritTransformer(torch.nn.Module):
         super().__init__()
         self.encoder = FeatureEncoder(dim_in)
         dim_in = self.encoder.dim_in
-
-        self.ablation = True
-        self.ablation = False
+        
+        # Track embeddings for auxiliary losses
+        self.layer_embeddings = []  # Store embeddings from each layer during training
 
         if cfg.posenc_RRWP.enable:
             self.rrwp_abs_encoder = register.node_encoder_dict["rrwp_linear"]\
@@ -112,8 +112,45 @@ class GritTransformer(torch.nn.Module):
         self.post_mp = GNNHead(dim_in=cfg.gnn.dim_inner, dim_out=dim_out)
 
     def forward(self, batch):
-        for module in self.children():
-            batch = module(batch)
+        # Clear layer embeddings for new forward pass
+        self.layer_embeddings = []
+        
+        # Track whether we should store embeddings (only during training)
+        store_embeddings = False
+        if self.training and hasattr(cfg, 'loss'):
+            attn_enabled = getattr(getattr(cfg.loss, 'attention_improvement', None), 'enable', False)
+            struct_enabled = getattr(getattr(cfg.loss, 'structure_reconstruction', None), 'enable', False)
+            store_embeddings = attn_enabled or struct_enabled
+        
+        # Process through encoder
+        batch = self.encoder(batch)
+        
+        # Process RRWP encoders if enabled
+        if cfg.posenc_RRWP.enable:
+            batch = self.rrwp_abs_encoder(batch)
+            batch = self.rrwp_rel_encoder(batch)
+        
+        # Process pre-MP layers if any
+        if cfg.gnn.layers_pre_mp > 0:
+            batch = self.pre_mp(batch)
+        
+        # Process transformer layers and track embeddings
+        for i, layer in enumerate(self.layers):
+            if store_embeddings:
+                # Store embedding before this layer (keep in computation graph)
+                self.layer_embeddings.append({
+                    'layer_idx': i,
+                    'input_embeddings': batch.x
+                })
+            
+            batch = layer(batch)
+            
+            if store_embeddings:
+                # Store embedding after this layer (keep in computation graph)
+                self.layer_embeddings[-1]['output_embeddings'] = batch.x
+        
+        # Process post-MP head
+        batch = self.post_mp(batch)
 
         return batch
 
