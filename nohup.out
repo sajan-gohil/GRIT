@@ -1,0 +1,1054 @@
+/home/sajan_rg/.local/lib/python3.12/site-packages/outdated/__init__.py:36: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import parse_version
+usage: main.py [-h] --cfg CFG_FILE [--repeat REPEAT] [--mark_done] ...
+main.py: error: the following arguments are required: --cfg
+/home/sajan_rg/.local/lib/python3.12/site-packages/outdated/__init__.py:36: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import parse_version
+[*] Run ID 0: seed=0, split_index=0
+    Starting now: 2026-01-30 15:23:09.567212
+Downloading https://www.dropbox.com/s/ol2v01usvaxbsr8/peptide_multi_class_dataset.csv.gz?dl=1
+Downloading https://www.dropbox.com/s/j4zcnx2eipuo0xz/splits_random_stratified_peptide.pickle?dl=1
+Processing...
+Converting SMILES strings into graphs...
+  0%|          | 0/15535 [00:00<?, ?it/s]  0%|          | 22/15535 [00:00<01:11, 218.38it/s]  0%|          | 45/15535 [00:00<01:10, 218.76it/s]  0%|          | 68/15535 [00:00<01:09, 221.65it/s]  1%|          | 97/15535 [00:00<01:03, 244.62it/s]  1%|          | 122/15535 [00:00<01:04, 238.24it/s]  1%|          | 151/15535 [00:00<01:00, 254.57it/s]  1%|          | 177/15535 [00:00<01:02, 246.49it/s]  1%|▏         | 203/15535 [00:00<01:01, 248.93it/s]  1%|▏         | 231/15535 [00:00<00:59, 256.43it/s]  2%|▏         | 257/15535 [00:01<01:00, 253.56it/s]  2%|▏         | 283/15535 [00:01<01:01, 246.38it/s]  2%|▏         | 311/15535 [00:01<00:59, 255.88it/s]  2%|▏         | 337/15535 [00:01<01:00, 250.72it/s]  2%|▏         | 363/15535 [00:01<01:02, 241.34it/s]  3%|▎         | 392/15535 [00:01<00:59, 254.27it/s]  3%|▎         | 418/15535 [00:01<01:03, 237.74it/s]  3%|▎         | 450/15535 [00:01<00:58, 258.72it/s]  3%|▎         | 492/15535 [00:01<00:49, 303.17it/s]  3%|▎         | 538/15535 [00:02<00:43, 347.62it/s]  4%|▍         | 586/15535 [00:02<00:38, 385.10it/s]  4%|▍         | 626/15535 [00:02<00:40, 372.65it/s]  4%|▍         | 669/15535 [00:02<00:38, 385.41it/s]  5%|▍         | 715/15535 [00:02<00:36, 402.99it/s]  5%|▍         | 758/15535 [00:02<00:36, 406.80it/s]  5%|▌         | 804/15535 [00:02<00:35, 420.66it/s]  5%|▌         | 851/15535 [00:02<00:33, 433.26it/s]  6%|▌         | 895/15535 [00:02<00:35, 411.44it/s]  6%|▌         | 941/15535 [00:02<00:34, 423.67it/s]  6%|▋         | 987/15535 [00:03<00:33, 432.81it/s]  7%|▋         | 1031/15535 [00:03<00:34, 415.49it/s]  7%|▋         | 1078/15535 [00:03<00:33, 428.17it/s]  7%|▋         | 1122/15535 [00:03<00:33, 428.18it/s]  8%|▊         | 1166/15535 [00:03<00:33, 430.89it/s]  8%|▊         | 1210/15535 [00:03<00:33, 431.81it/s]  8%|▊         | 1254/15535 [00:03<00:33, 432.36it/s]  8%|▊         | 1298/15535 [00:03<00:33, 420.68it/s]  9%|▊         | 1342/15535 [00:03<00:33, 423.19it/s]  9%|▉         | 1385/15535 [00:04<00:34, 415.91it/s]  9%|▉         | 1429/15535 [00:04<00:33, 422.52it/s]  9%|▉         | 1472/15535 [00:04<00:33, 415.47it/s] 10%|▉         | 1521/15535 [00:04<00:32, 431.63it/s] 10%|█         | 1565/15535 [00:04<00:33, 420.59it/s] 10%|█         | 1608/15535 [00:04<00:34, 401.69it/s] 11%|█         | 1652/15535 [00:04<00:34, 408.00it/s] 11%|█         | 1693/15535 [00:04<00:34, 400.99it/s] 11%|█         | 1734/15535 [00:04<00:35, 391.64it/s] 11%|█▏        | 1774/15535 [00:04<00:36, 378.62it/s] 12%|█▏        | 1817/15535 [00:05<00:35, 389.51it/s] 12%|█▏        | 1857/15535 [00:05<00:35, 383.51it/s] 12%|█▏        | 1900/15535 [00:05<00:34, 396.16it/s] 13%|█▎        | 1951/15535 [00:05<00:31, 427.31it/s] 13%|█▎        | 1997/15535 [00:05<00:31, 436.34it/s] 13%|█▎        | 2041/15535 [00:05<00:31, 423.23it/s] 13%|█▎        | 2084/15535 [00:05<00:32, 410.20it/s] 14%|█▎        | 2127/15535 [00:05<00:32, 415.20it/s] 14%|█▍        | 2169/15535 [00:05<00:32, 410.61it/s] 14%|█▍        | 2213/15535 [00:06<00:32, 413.98it/s] 15%|█▍        | 2258/15535 [00:06<00:31, 424.24it/s] 15%|█▍        | 2301/15535 [00:06<00:31, 417.60it/s] 15%|█▌        | 2343/15535 [00:06<00:32, 402.34it/s] 15%|█▌        | 2387/15535 [00:06<00:31, 412.18it/s] 16%|█▌        | 2429/15535 [00:06<00:32, 402.75it/s] 16%|█▌        | 2470/15535 [00:06<00:33, 390.02it/s] 16%|█▌        | 2512/15535 [00:06<00:32, 396.34it/s] 16%|█▋        | 2554/15535 [00:06<00:32, 401.23it/s] 17%|█▋        | 2595/15535 [00:06<00:32, 400.88it/s] 17%|█▋        | 2636/15535 [00:07<00:32, 397.59it/s] 17%|█▋        | 2677/15535 [00:07<00:32, 395.91it/s] 17%|█▋        | 2717/15535 [00:07<00:32, 389.94it/s] 18%|█▊        | 2762/15535 [00:07<00:31, 404.77it/s] 18%|█▊        | 2806/15535 [00:07<00:30, 413.10it/s] 18%|█▊        | 2854/15535 [00:07<00:29, 431.98it/s] 19%|█▊        | 2898/15535 [00:07<00:29, 424.17it/s] 19%|█▉        | 2941/15535 [00:07<00:30, 418.67it/s] 19%|█▉        | 2983/15535 [00:07<00:31, 404.42it/s] 20%|█▉        | 3031/15535 [00:08<00:29, 425.59it/s] 20%|█▉        | 3074/15535 [00:08<00:30, 414.30it/s] 20%|██        | 3116/15535 [00:08<00:30, 407.69it/s] 20%|██        | 3160/15535 [00:08<00:29, 415.87it/s] 21%|██        | 3204/15535 [00:08<00:29, 419.56it/s] 21%|██        | 3247/15535 [00:08<00:29, 412.45it/s] 21%|██        | 3291/15535 [00:08<00:29, 418.91it/s] 21%|██▏       | 3333/15535 [00:08<00:30, 406.29it/s] 22%|██▏       | 3374/15535 [00:08<00:30, 403.71it/s] 22%|██▏       | 3418/15535 [00:08<00:29, 413.50it/s] 22%|██▏       | 3461/15535 [00:09<00:28, 417.01it/s] 23%|██▎       | 3503/15535 [00:09<00:29, 407.54it/s] 23%|██▎       | 3547/15535 [00:09<00:28, 413.76it/s] 23%|██▎       | 3592/15535 [00:09<00:28, 424.22it/s] 23%|██▎       | 3635/15535 [00:09<00:28, 419.28it/s] 24%|██▎       | 3677/15535 [00:09<00:29, 407.87it/s] 24%|██▍       | 3718/15535 [00:09<00:29, 397.87it/s] 24%|██▍       | 3758/15535 [00:09<00:29, 394.08it/s] 24%|██▍       | 3798/15535 [00:09<00:31, 376.92it/s] 25%|██▍       | 3837/15535 [00:10<00:30, 380.08it/s] 25%|██▍       | 3876/15535 [00:10<00:30, 382.29it/s] 25%|██▌       | 3921/15535 [00:10<00:29, 399.10it/s] 26%|██▌       | 3962/15535 [00:10<00:29, 390.83it/s] 26%|██▌       | 4002/15535 [00:10<00:29, 384.60it/s] 26%|██▌       | 4044/15535 [00:10<00:29, 394.30it/s] 26%|██▋       | 4092/15535 [00:10<00:27, 415.20it/s] 27%|██▋       | 4138/15535 [00:10<00:26, 426.83it/s] 27%|██▋       | 4181/15535 [00:10<00:27, 412.31it/s] 27%|██▋       | 4224/15535 [00:10<00:27, 415.42it/s] 27%|██▋       | 4266/15535 [00:11<00:27, 410.36it/s] 28%|██▊       | 4309/15535 [00:11<00:27, 413.99it/s] 28%|██▊       | 4351/15535 [00:11<00:28, 399.06it/s] 28%|██▊       | 4394/15535 [00:11<00:27, 404.82it/s] 29%|██▊       | 4435/15535 [00:11<00:27, 400.87it/s] 29%|██▉       | 4476/15535 [00:11<00:27, 398.55it/s] 29%|██▉       | 4516/15535 [00:11<00:29, 379.00it/s] 29%|██▉       | 4557/15535 [00:11<00:28, 386.50it/s] 30%|██▉       | 4600/15535 [00:11<00:27, 398.76it/s] 30%|██▉       | 4644/15535 [00:12<00:26, 404.43it/s] 30%|███       | 4685/15535 [00:12<00:27, 399.12it/s] 30%|███       | 4726/15535 [00:12<00:27, 394.56it/s] 31%|███       | 4769/15535 [00:12<00:26, 403.13it/s] 31%|███       | 4814/15535 [00:12<00:25, 414.11it/s] 31%|███▏      | 4856/15535 [00:12<00:25, 415.04it/s] 32%|███▏      | 4899/15535 [00:12<00:25, 418.00it/s] 32%|███▏      | 4942/15535 [00:12<00:25, 416.32it/s] 32%|███▏      | 4984/15535 [00:12<00:26, 398.21it/s] 32%|███▏      | 5026/15535 [00:12<00:25, 404.27it/s] 33%|███▎      | 5075/15535 [00:13<00:24, 429.01it/s] 33%|███▎      | 5119/15535 [00:13<00:25, 408.23it/s] 33%|███▎      | 5165/15535 [00:13<00:24, 422.25it/s] 34%|███▎      | 5208/15535 [00:13<00:25, 412.92it/s] 34%|███▍      | 5250/15535 [00:13<00:25, 406.77it/s] 34%|███▍      | 5291/15535 [00:13<00:26, 390.67it/s] 34%|███▍      | 5335/15535 [00:13<00:25, 398.13it/s] 35%|███▍      | 5376/15535 [00:13<00:25, 400.12it/s] 35%|███▍      | 5422/15535 [00:13<00:24, 412.59it/s] 35%|███▌      | 5465/15535 [00:14<00:24, 416.55it/s] 35%|███▌      | 5507/15535 [00:14<00:24, 412.38it/s] 36%|███▌      | 5549/15535 [00:14<00:24, 412.85it/s] 36%|███▌      | 5593/15535 [00:14<00:23, 419.27it/s] 36%|███▋      | 5635/15535 [00:14<00:23, 413.83it/s] 37%|███▋      | 5677/15535 [00:14<00:24, 403.19it/s] 37%|███▋      | 5718/15535 [00:14<00:25, 377.97it/s] 37%|███▋      | 5760/15535 [00:14<00:25, 388.50it/s] 37%|███▋      | 5800/15535 [00:14<00:25, 382.23it/s] 38%|███▊      | 5840/15535 [00:15<00:25, 385.13it/s] 38%|███▊      | 5885/15535 [00:15<00:24, 401.67it/s] 38%|███▊      | 5929/15535 [00:15<00:23, 412.28it/s] 38%|███▊      | 5975/15535 [00:15<00:22, 426.08it/s] 39%|███▉      | 6021/15535 [00:15<00:21, 435.49it/s] 39%|███▉      | 6065/15535 [00:15<00:22, 414.14it/s] 39%|███▉      | 6109/15535 [00:15<00:22, 420.71it/s] 40%|███▉      | 6153/15535 [00:15<00:22, 423.98it/s] 40%|███▉      | 6196/15535 [00:15<00:23, 404.37it/s] 40%|████      | 6244/15535 [00:15<00:21, 425.69it/s] 40%|████      | 6287/15535 [00:16<00:21, 421.62it/s] 41%|████      | 6330/15535 [00:16<00:21, 423.80it/s] 41%|████      | 6373/15535 [00:16<00:22, 408.02it/s] 41%|████▏     | 6415/15535 [00:16<00:22, 411.26it/s] 42%|████▏     | 6457/15535 [00:16<00:22, 409.00it/s][15:23:34] WARNING: not removing hydrogen atom without neighbors
+[15:23:34] WARNING: not removing hydrogen atom without neighbors
+ 42%|████▏     | 6499/15535 [00:16<00:21, 411.94it/s] 42%|████▏     | 6541/15535 [00:16<00:22, 405.63it/s] 42%|████▏     | 6582/15535 [00:16<00:22, 404.64it/s] 43%|████▎     | 6626/15535 [00:16<00:21, 414.06it/s] 43%|████▎     | 6669/15535 [00:16<00:21, 414.58it/s] 43%|████▎     | 6711/15535 [00:17<00:22, 397.99it/s] 43%|████▎     | 6753/15535 [00:17<00:21, 402.45it/s] 44%|████▍     | 6798/15535 [00:17<00:21, 414.78it/s] 44%|████▍     | 6840/15535 [00:17<00:29, 298.80it/s] 44%|████▍     | 6877/15535 [00:17<00:27, 313.40it/s] 45%|████▍     | 6927/15535 [00:17<00:24, 356.99it/s] 45%|████▍     | 6974/15535 [00:17<00:22, 386.19it/s] 45%|████▌     | 7016/15535 [00:17<00:22, 379.13it/s] 45%|████▌     | 7060/15535 [00:18<00:21, 394.57it/s] 46%|████▌     | 7102/15535 [00:18<00:21, 388.18it/s] 46%|████▌     | 7144/15535 [00:18<00:21, 395.04it/s] 46%|████▋     | 7185/15535 [00:18<00:21, 396.99it/s] 47%|████▋     | 7228/15535 [00:18<00:20, 403.29it/s] 47%|████▋     | 7269/15535 [00:18<00:21, 392.75it/s] 47%|████▋     | 7315/15535 [00:18<00:20, 409.06it/s] 47%|████▋     | 7357/15535 [00:18<00:20, 395.24it/s] 48%|████▊     | 7404/15535 [00:18<00:19, 415.31it/s] 48%|████▊     | 7450/15535 [00:19<00:18, 425.79it/s] 48%|████▊     | 7493/15535 [00:19<00:20, 401.09it/s] 48%|████▊     | 7534/15535 [00:19<00:19, 400.88it/s] 49%|████▉     | 7582/15535 [00:19<00:18, 422.18it/s] 49%|████▉     | 7625/15535 [00:19<00:18, 419.31it/s] 49%|████▉     | 7668/15535 [00:19<00:18, 414.43it/s] 50%|████▉     | 7710/15535 [00:19<00:19, 404.86it/s] 50%|████▉     | 7751/15535 [00:19<00:19, 398.83it/s] 50%|█████     | 7793/15535 [00:19<00:19, 400.69it/s] 50%|█████     | 7835/15535 [00:19<00:18, 405.57it/s] 51%|█████     | 7877/15535 [00:20<00:18, 409.50it/s] 51%|█████     | 7919/15535 [00:20<00:18, 412.54it/s] 51%|█████▏    | 7963/15535 [00:20<00:18, 418.09it/s] 52%|█████▏    | 8005/15535 [00:20<00:17, 418.45it/s] 52%|█████▏    | 8050/15535 [00:20<00:17, 427.05it/s] 52%|█████▏    | 8093/15535 [00:20<00:17, 426.54it/s] 52%|█████▏    | 8136/15535 [00:20<00:17, 416.75it/s] 53%|█████▎    | 8178/15535 [00:20<00:18, 399.68it/s] 53%|█████▎    | 8219/15535 [00:20<00:18, 394.24it/s] 53%|█████▎    | 8266/15535 [00:20<00:17, 415.14it/s] 53%|█████▎    | 8308/15535 [00:21<00:18, 394.77it/s] 54%|█████▍    | 8358/15535 [00:21<00:16, 424.11it/s] 54%|█████▍    | 8401/15535 [00:21<00:17, 416.85it/s] 54%|█████▍    | 8443/15535 [00:21<00:17, 403.71it/s] 55%|█████▍    | 8485/15535 [00:21<00:17, 406.14it/s] 55%|█████▍    | 8526/15535 [00:21<00:17, 398.57it/s] 55%|█████▌    | 8573/15535 [00:21<00:16, 418.99it/s] 55%|█████▌    | 8616/15535 [00:21<00:16, 421.31it/s] 56%|█████▌    | 8659/15535 [00:21<00:17, 404.16it/s] 56%|█████▌    | 8709/15535 [00:22<00:15, 429.20it/s] 56%|█████▋    | 8754/15535 [00:22<00:15, 434.29it/s] 57%|█████▋    | 8798/15535 [00:22<00:15, 430.31it/s] 57%|█████▋    | 8843/15535 [00:22<00:15, 430.15it/s] 57%|█████▋    | 8887/15535 [00:22<00:16, 406.48it/s] 57%|█████▋    | 8929/15535 [00:22<00:16, 406.07it/s] 58%|█████▊    | 8973/15535 [00:22<00:16, 410.04it/s] 58%|█████▊    | 9015/15535 [00:22<00:16, 402.36it/s] 58%|█████▊    | 9063/15535 [00:22<00:15, 421.79it/s] 59%|█████▊    | 9111/15535 [00:23<00:14, 438.52it/s] 59%|█████▉    | 9156/15535 [00:23<00:15, 422.14it/s] 59%|█████▉    | 9199/15535 [00:23<00:15, 414.19it/s] 60%|█████▉    | 9246/15535 [00:23<00:14, 427.46it/s] 60%|█████▉    | 9289/15535 [00:23<00:15, 400.90it/s] 60%|██████    | 9332/15535 [00:23<00:15, 408.23it/s] 60%|██████    | 9377/15535 [00:23<00:14, 418.82it/s] 61%|██████    | 9420/15535 [00:23<00:14, 416.04it/s] 61%|██████    | 9464/15535 [00:23<00:14, 422.73it/s] 61%|██████    | 9507/15535 [00:23<00:14, 418.62it/s] 61%|██████▏   | 9549/15535 [00:24<00:14, 414.38it/s] 62%|██████▏   | 9591/15535 [00:24<00:14, 404.42it/s] 62%|██████▏   | 9636/15535 [00:24<00:14, 415.73it/s] 62%|██████▏   | 9679/15535 [00:24<00:14, 418.16it/s] 63%|██████▎   | 9721/15535 [00:24<00:14, 396.56it/s] 63%|██████▎   | 9765/15535 [00:24<00:14, 407.24it/s] 63%|██████▎   | 9806/15535 [00:24<00:14, 395.51it/s] 63%|██████▎   | 9846/15535 [00:24<00:14, 384.21it/s] 64%|██████▎   | 9890/15535 [00:24<00:14, 399.61it/s] 64%|██████▍   | 9936/15535 [00:25<00:13, 413.00it/s] 64%|██████▍   | 9979/15535 [00:25<00:13, 417.73it/s] 65%|██████▍   | 10021/15535 [00:25<00:13, 410.43it/s] 65%|██████▍   | 10069/15535 [00:25<00:12, 427.03it/s] 65%|██████▌   | 10117/15535 [00:25<00:12, 441.78it/s] 65%|██████▌   | 10162/15535 [00:25<00:12, 433.55it/s] 66%|██████▌   | 10206/15535 [00:25<00:12, 431.69it/s] 66%|██████▌   | 10250/15535 [00:25<00:12, 413.99it/s] 66%|██████▋   | 10292/15535 [00:25<00:12, 413.63it/s] 67%|██████▋   | 10334/15535 [00:25<00:12, 404.63it/s] 67%|██████▋   | 10382/15535 [00:26<00:12, 425.49it/s] 67%|██████▋   | 10425/15535 [00:26<00:11, 426.53it/s] 67%|██████▋   | 10468/15535 [00:26<00:12, 417.13it/s] 68%|██████▊   | 10514/15535 [00:26<00:11, 426.34it/s] 68%|██████▊   | 10557/15535 [00:26<00:11, 425.73it/s] 68%|██████▊   | 10600/15535 [00:26<00:11, 422.60it/s] 69%|██████▊   | 10645/15535 [00:26<00:11, 428.75it/s] 69%|██████▉   | 10688/15535 [00:26<00:11, 420.59it/s] 69%|██████▉   | 10731/15535 [00:26<00:11, 411.34it/s] 69%|██████▉   | 10773/15535 [00:27<00:11, 412.23it/s] 70%|██████▉   | 10815/15535 [00:27<00:11, 407.34it/s] 70%|██████▉   | 10860/15535 [00:27<00:11, 416.77it/s] 70%|███████   | 10905/15535 [00:27<00:10, 424.04it/s] 70%|███████   | 10948/15535 [00:27<00:11, 416.60it/s] 71%|███████   | 10994/15535 [00:27<00:10, 424.15it/s] 71%|███████   | 11040/15535 [00:27<00:10, 433.05it/s] 71%|███████▏  | 11084/15535 [00:27<00:10, 431.63it/s] 72%|███████▏  | 11133/15535 [00:27<00:09, 441.39it/s] 72%|███████▏  | 11178/15535 [00:27<00:10, 423.22it/s] 72%|███████▏  | 11224/15535 [00:28<00:09, 433.41it/s] 73%|███████▎  | 11271/15535 [00:28<00:09, 443.75it/s] 73%|███████▎  | 11316/15535 [00:28<00:09, 431.04it/s] 73%|███████▎  | 11366/15535 [00:28<00:09, 447.12it/s] 73%|███████▎  | 11411/15535 [00:28<00:09, 441.51it/s] 74%|███████▎  | 11456/15535 [00:28<00:09, 419.80it/s] 74%|███████▍  | 11506/15535 [00:28<00:09, 441.74it/s] 74%|███████▍  | 11551/15535 [00:28<00:09, 431.29it/s] 75%|███████▍  | 11595/15535 [00:28<00:09, 430.67it/s] 75%|███████▍  | 11639/15535 [00:29<00:09, 413.05it/s] 75%|███████▌  | 11681/15535 [00:29<00:09, 401.55it/s] 75%|███████▌  | 11723/15535 [00:29<00:09, 404.42it/s] 76%|███████▌  | 11769/15535 [00:29<00:09, 418.05it/s] 76%|███████▌  | 11812/15535 [00:29<00:08, 421.42it/s] 76%|███████▋  | 11858/15535 [00:29<00:08, 432.61it/s] 77%|███████▋  | 11902/15535 [00:29<00:08, 419.55it/s] 77%|███████▋  | 11945/15535 [00:29<00:08, 409.75it/s] 77%|███████▋  | 11987/15535 [00:29<00:08, 402.24it/s] 77%|███████▋  | 12028/15535 [00:29<00:08, 402.23it/s] 78%|███████▊  | 12069/15535 [00:30<00:08, 402.76it/s] 78%|███████▊  | 12110/15535 [00:30<00:08, 402.43it/s] 78%|███████▊  | 12153/15535 [00:30<00:08, 409.35it/s] 79%|███████▊  | 12201/15535 [00:30<00:07, 429.63it/s] 79%|███████▉  | 12245/15535 [00:30<00:07, 421.23it/s] 79%|███████▉  | 12288/15535 [00:30<00:07, 409.99it/s] 79%|███████▉  | 12334/15535 [00:30<00:07, 420.78it/s] 80%|███████▉  | 12377/15535 [00:30<00:07, 419.46it/s] 80%|███████▉  | 12421/15535 [00:30<00:07, 424.87it/s] 80%|████████  | 12464/15535 [00:31<00:07, 423.74it/s] 81%|████████  | 12507/15535 [00:31<00:07, 411.56it/s] 81%|████████  | 12553/15535 [00:31<00:07, 424.54it/s] 81%|████████  | 12601/15535 [00:31<00:06, 439.42it/s] 81%|████████▏ | 12646/15535 [00:31<00:06, 438.51it/s] 82%|████████▏ | 12690/15535 [00:31<00:06, 412.14it/s] 82%|████████▏ | 12733/15535 [00:31<00:06, 415.88it/s] 82%|████████▏ | 12775/15535 [00:31<00:06, 415.33it/s] 83%|████████▎ | 12821/15535 [00:31<00:06, 427.92it/s] 83%|████████▎ | 12866/15535 [00:31<00:06, 434.26it/s] 83%|████████▎ | 12913/15535 [00:32<00:05, 441.73it/s] 83%|████████▎ | 12958/15535 [00:32<00:06, 415.45it/s] 84%|████████▎ | 13000/15535 [00:32<00:06, 405.58it/s] 84%|████████▍ | 13041/15535 [00:32<00:06, 406.71it/s] 84%|████████▍ | 13082/15535 [00:32<00:06, 400.48it/s] 85%|████████▍ | 13130/15535 [00:32<00:05, 422.90it/s] 85%|████████▍ | 13177/15535 [00:32<00:05, 432.73it/s] 85%|████████▌ | 13221/15535 [00:32<00:05, 426.06it/s] 85%|████████▌ | 13264/15535 [00:32<00:05, 421.26it/s] 86%|████████▌ | 13309/15535 [00:33<00:05, 427.07it/s] 86%|████████▌ | 13352/15535 [00:33<00:05, 426.05it/s] 86%|████████▌ | 13395/15535 [00:33<00:05, 410.49it/s] 86%|████████▋ | 13437/15535 [00:33<00:05, 405.77it/s] 87%|████████▋ | 13478/15535 [00:33<00:05, 383.24it/s] 87%|████████▋ | 13517/15535 [00:33<00:05, 377.41it/s] 87%|████████▋ | 13560/15535 [00:33<00:05, 390.43it/s] 88%|████████▊ | 13605/15535 [00:33<00:04, 404.28it/s] 88%|████████▊ | 13647/15535 [00:33<00:04, 404.74it/s] 88%|████████▊ | 13688/15535 [00:33<00:04, 405.04it/s] 88%|████████▊ | 13733/15535 [00:34<00:04, 416.31it/s] 89%|████████▊ | 13775/15535 [00:34<00:04, 417.29it/s] 89%|████████▉ | 13817/15535 [00:34<00:04, 408.03it/s] 89%|████████▉ | 13858/15535 [00:34<00:04, 397.27it/s] 89%|████████▉ | 13903/15535 [00:34<00:04, 406.48it/s] 90%|████████▉ | 13946/15535 [00:34<00:03, 408.63it/s] 90%|█████████ | 13987/15535 [00:34<00:03, 395.51it/s] 90%|█████████ | 14035/15535 [00:34<00:03, 417.46it/s] 91%|█████████ | 14077/15535 [00:34<00:03, 412.59it/s] 91%|█████████ | 14122/15535 [00:35<00:03, 422.61it/s] 91%|█████████ | 14168/15535 [00:35<00:03, 431.96it/s] 91%|█████████▏| 14212/15535 [00:35<00:03, 420.71it/s] 92%|█████████▏| 14255/15535 [00:35<00:03, 418.98it/s] 92%|█████████▏| 14297/15535 [00:35<00:03, 411.16it/s] 92%|█████████▏| 14344/15535 [00:35<00:02, 426.97it/s] 93%|█████████▎| 14394/15535 [00:35<00:02, 447.98it/s] 93%|█████████▎| 14439/15535 [00:35<00:02, 432.74it/s] 93%|█████████▎| 14483/15535 [00:35<00:02, 418.06it/s] 94%|█████████▎| 14526/15535 [00:36<00:02, 399.21it/s] 94%|█████████▍| 14567/15535 [00:36<00:02, 390.09it/s] 94%|█████████▍| 14608/15535 [00:36<00:02, 395.54it/s] 94%|█████████▍| 14648/15535 [00:36<00:02, 379.59it/s] 95%|█████████▍| 14691/15535 [00:36<00:02, 393.43it/s] 95%|█████████▍| 14732/15535 [00:36<00:02, 395.12it/s] 95%|█████████▌| 14774/15535 [00:36<00:01, 400.51it/s] 95%|█████████▌| 14815/15535 [00:36<00:01, 386.45it/s] 96%|█████████▌| 14857/15535 [00:36<00:01, 395.95it/s] 96%|█████████▌| 14900/15535 [00:36<00:01, 404.37it/s] 96%|█████████▌| 14944/15535 [00:37<00:01, 413.84it/s] 96%|█████████▋| 14986/15535 [00:37<00:01, 392.90it/s] 97%|█████████▋| 15032/15535 [00:37<00:01, 409.09it/s] 97%|█████████▋| 15074/15535 [00:37<00:01, 403.00it/s] 97%|█████████▋| 15116/15535 [00:37<00:01, 406.61it/s] 98%|█████████▊| 15157/15535 [00:37<00:00, 399.88it/s] 98%|█████████▊| 15198/15535 [00:37<00:00, 401.55it/s] 98%|█████████▊| 15245/15535 [00:37<00:00, 421.14it/s] 98%|█████████▊| 15288/15535 [00:37<00:00, 419.87it/s] 99%|█████████▊| 15332/15535 [00:38<00:00, 425.57it/s] 99%|█████████▉| 15376/15535 [00:38<00:00, 425.35it/s] 99%|█████████▉| 15421/15535 [00:38<00:00, 431.71it/s]100%|█████████▉| 15465/15535 [00:38<00:00, 431.70it/s]100%|█████████▉| 15509/15535 [00:38<00:00, 399.01it/s]100%|██████████| 15535/15535 [00:38<00:00, 403.34it/s]
+Done!
+Saving...
+Traceback (most recent call last):
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/main.py", line 156, in <module>
+    loaders = create_loader()
+              ^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/.local/lib/python3.12/site-packages/torch_geometric/graphgym/loader.py", line 311, in create_loader
+    dataset = create_dataset()
+              ^^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/.local/lib/python3.12/site-packages/torch_geometric/graphgym/loader.py", line 234, in create_dataset
+    dataset = load_dataset()
+              ^^^^^^^^^^^^^^
+  File "/home/sajan_rg/.local/lib/python3.12/site-packages/torch_geometric/graphgym/loader.py", line 182, in load_dataset
+    dataset = func(format, name, dataset_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/grit/loader/master_loader.py", line 155, in load_dataset_master
+    dataset = preformat_Peptides(dataset_dir, name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/grit/loader/master_loader.py", line 609, in preformat_Peptides
+    dataset = PeptidesFunctionalDataset(dataset_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/grit/loader/dataset/peptides_functional.py", line 57, in __init__
+    self.data, self.slices = torch.load(self.processed_paths[0])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/.local/lib/python3.12/site-packages/torch/serialization.py", line 1524, in load
+    raise pickle.UnpicklingError(_get_wo_message(str(e))) from None
+_pickle.UnpicklingError: Weights only load failed. This file can still be loaded, to do so you have two options, [1mdo those steps only if you trust the source of the checkpoint[0m. 
+	(1) In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
+	(2) Alternatively, to load with `weights_only=True` please check the recommended steps in the following error message.
+	WeightsUnpickler error: Unsupported global: GLOBAL torch_geometric.data.data.DataEdgeAttr was not an allowed global by default. Please use `torch.serialization.add_safe_globals([torch_geometric.data.data.DataEdgeAttr])` or the `torch.serialization.safe_globals([torch_geometric.data.data.DataEdgeAttr])` context manager to allowlist this global if you trust this class/function.
+
+Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.
+/home/sajan_rg/.local/lib/python3.12/site-packages/outdated/__init__.py:36: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import parse_version
+[*] Run ID 0: seed=0, split_index=0
+    Starting now: 2026-01-30 16:31:02.308885
+[*] Loaded dataset 'peptides-functional' from 'OGB':
+/home/sajan_rg/.local/lib/python3.12/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+  Data(edge_index=[2, 4773974], edge_attr=[4773974, 3], x=[2344859, 9], y=[15535, 10])
+  undirected: True
+  num graphs: 15535
+/home/sajan_rg/.local/lib/python3.12/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. The data of the dataset is already cached, so any modifications to `data` will not be reflected when accessing its elements. Clearing the cache now by removing all elements in `dataset._data_list`. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+  avg num_nodes/graph: 150
+  num node features: 9
+  num edge features: 3
+  num classes: 10
+Precomputing Positional Encoding statistics: ['RRWP'] for all graphs...
+  ...estimated to be undirected: True
+  0%|          | 0/15535 [00:00<?, ?it/s] 29%|██▊       | 4449/15535 [00:10<00:24, 444.84it/s] 59%|█████▉    | 9187/15535 [00:20<00:13, 461.83it/s] 90%|████████▉ | 13942/15535 [00:30<00:03, 468.00it/s]100%|██████████| 15535/15535 [00:33<00:00, 465.83it/s]
+Done! Took 00:00:36.15
+Traceback (most recent call last):
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/main.py", line 157, in <module>
+    loggers = create_logger()
+              ^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/grit/logger.py", line 302, in create_logger
+    loggers.append(CustomLogger(name=names[i], task_type=infer_task()))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/grit/logger.py", line 46, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/sajan_rg/.local/lib/python3.12/site-packages/torch_geometric/graphgym/logger.py", line 46, in __init__
+    from tensorboardX import SummaryWriter
+ModuleNotFoundError: No module named 'tensorboardX'
+/home/sajan_rg/.local/lib/python3.12/site-packages/outdated/__init__.py:36: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import parse_version
+[*] Run ID 0: seed=0, split_index=0
+    Starting now: 2026-01-30 16:39:11.930973
+[*] Loaded dataset 'peptides-functional' from 'OGB':
+/home/sajan_rg/.local/lib/python3.12/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+  Data(edge_index=[2, 4773974], edge_attr=[4773974, 3], x=[2344859, 9], y=[15535, 10])
+  undirected: True
+  num graphs: 15535
+/home/sajan_rg/.local/lib/python3.12/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. The data of the dataset is already cached, so any modifications to `data` will not be reflected when accessing its elements. Clearing the cache now by removing all elements in `dataset._data_list`. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+  avg num_nodes/graph: 150
+  num node features: 9
+  num edge features: 3
+  num classes: 10
+Precomputing Positional Encoding statistics: ['RRWP'] for all graphs...
+  ...estimated to be undirected: True
+  0%|          | 0/15535 [00:00<?, ?it/s] 26%|██▌       | 4013/15535 [00:10<00:28, 401.29it/s] 56%|█████▌    | 8698/15535 [00:20<00:15, 440.81it/s] 87%|████████▋ | 13476/15535 [00:30<00:04, 457.64it/s]100%|██████████| 15535/15535 [00:34<00:00, 452.73it/s]
+Done! Took 00:00:36.80
+/home/sajan_rg/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:789: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+GraphGymModule(
+  (model): GritTransformer(
+    (encoder): FeatureEncoder(
+      (node_encoder): AtomEncoder(
+        (atom_embedding_list): ModuleList(
+          (0): Embedding(119, 96)
+          (1): Embedding(5, 96)
+          (2-3): 2 x Embedding(12, 96)
+          (4): Embedding(10, 96)
+          (5-6): 2 x Embedding(6, 96)
+          (7-8): 2 x Embedding(2, 96)
+        )
+      )
+      (edge_encoder): BondEncoder(
+        (bond_embedding_list): ModuleList(
+          (0): Embedding(5, 96)
+          (1): Embedding(6, 96)
+          (2): Embedding(2, 96)
+        )
+      )
+    )
+    (rrwp_abs_encoder): RRWPLinearNodeEncoder(
+      (fc): Linear(in_features=17, out_features=96, bias=False)
+    )
+    (rrwp_rel_encoder): RRWPLinearEdgeEncoder(pad_to_full_graph=True,fill_value=0.0,Linear(in_features=17, out_features=96, bias=False))
+    (layers): Sequential(
+      (0): GritTransformerLayer(in_channels=96, out_channels=96, heads=4, residual=True)
+      [GritTransformerLayer(
+        (act): ReLU()
+        (attention): MultiHeadAttentionLayerGritSparse(
+          (dropout): Dropout(p=0.5, inplace=False)
+          (Q): Linear(in_features=96, out_features=96, bias=True)
+          (K): Linear(in_features=96, out_features=96, bias=False)
+          (E): Linear(in_features=96, out_features=192, bias=True)
+          (V): Linear(in_features=96, out_features=96, bias=False)
+          (act): ReLU()
+        )
+        (O_h): Linear(in_features=96, out_features=96, bias=True)
+        (O_e): Linear(in_features=96, out_features=96, bias=True)
+        (batch_norm1_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (batch_norm1_e): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (FFN_h_layer1): Linear(in_features=96, out_features=192, bias=True)
+        (FFN_h_layer2): Linear(in_features=192, out_features=96, bias=True)
+        (batch_norm2_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )]
+      (1): GritTransformerLayer(in_channels=96, out_channels=96, heads=4, residual=True)
+      [GritTransformerLayer(
+        (act): ReLU()
+        (attention): MultiHeadAttentionLayerGritSparse(
+          (dropout): Dropout(p=0.5, inplace=False)
+          (Q): Linear(in_features=96, out_features=96, bias=True)
+          (K): Linear(in_features=96, out_features=96, bias=False)
+          (E): Linear(in_features=96, out_features=192, bias=True)
+          (V): Linear(in_features=96, out_features=96, bias=False)
+          (act): ReLU()
+        )
+        (O_h): Linear(in_features=96, out_features=96, bias=True)
+        (O_e): Linear(in_features=96, out_features=96, bias=True)
+        (batch_norm1_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (batch_norm1_e): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (FFN_h_layer1): Linear(in_features=96, out_features=192, bias=True)
+        (FFN_h_layer2): Linear(in_features=192, out_features=96, bias=True)
+        (batch_norm2_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )]
+      (2): GritTransformerLayer(in_channels=96, out_channels=96, heads=4, residual=True)
+      [GritTransformerLayer(
+        (act): ReLU()
+        (attention): MultiHeadAttentionLayerGritSparse(
+          (dropout): Dropout(p=0.5, inplace=False)
+          (Q): Linear(in_features=96, out_features=96, bias=True)
+          (K): Linear(in_features=96, out_features=96, bias=False)
+          (E): Linear(in_features=96, out_features=192, bias=True)
+          (V): Linear(in_features=96, out_features=96, bias=False)
+          (act): ReLU()
+        )
+        (O_h): Linear(in_features=96, out_features=96, bias=True)
+        (O_e): Linear(in_features=96, out_features=96, bias=True)
+        (batch_norm1_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (batch_norm1_e): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (FFN_h_layer1): Linear(in_features=96, out_features=192, bias=True)
+        (FFN_h_layer2): Linear(in_features=192, out_features=96, bias=True)
+        (batch_norm2_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )]
+      (3): GritTransformerLayer(in_channels=96, out_channels=96, heads=4, residual=True)
+      [GritTransformerLayer(
+        (act): ReLU()
+        (attention): MultiHeadAttentionLayerGritSparse(
+          (dropout): Dropout(p=0.5, inplace=False)
+          (Q): Linear(in_features=96, out_features=96, bias=True)
+          (K): Linear(in_features=96, out_features=96, bias=False)
+          (E): Linear(in_features=96, out_features=192, bias=True)
+          (V): Linear(in_features=96, out_features=96, bias=False)
+          (act): ReLU()
+        )
+        (O_h): Linear(in_features=96, out_features=96, bias=True)
+        (O_e): Linear(in_features=96, out_features=96, bias=True)
+        (batch_norm1_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (batch_norm1_e): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (FFN_h_layer1): Linear(in_features=96, out_features=192, bias=True)
+        (FFN_h_layer2): Linear(in_features=192, out_features=96, bias=True)
+        (batch_norm2_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )]
+    )
+    (post_mp): GNNGraphHead(
+      (layer_post_mp): MLP(
+        (model): Sequential(
+          (0): Linear(
+            (model): Linear(96, 10, bias=True)
+          )
+        )
+      )
+    )
+  )
+)
+accelerator: cuda:0
+benchmark: False
+best_by_loss: False
+bn:
+  eps: 1e-05
+  mom: 0.1
+cfg_dest: config.yaml
+cfg_file: configs/GRIT/peptides-func-GRIT-RRWP.yaml
+custom_metrics: []
+dataset:
+  cache_load: False
+  cache_save: False
+  dir: ./datasets
+  edge_dim: 128
+  edge_encoder: True
+  edge_encoder_bn: False
+  edge_encoder_name: Bond
+  edge_encoder_num_types: 0
+  edge_message_ratio: 0.8
+  edge_negative_sampling_ratio: 1.0
+  edge_train_mode: all
+  encoder: True
+  encoder_bn: True
+  encoder_dim: 128
+  encoder_name: db
+  format: OGB
+  label_column: none
+  label_table: none
+  location: local
+  name: peptides-functional
+  node_encoder: True
+  node_encoder_bn: False
+  node_encoder_name: Atom
+  node_encoder_num_types: 0
+  pe_transform_on_the_fly: False
+  remove_feature: False
+  resample_disjoint: False
+  resample_negative: False
+  shuffle_split: True
+  slic_compactness: 10
+  split: [0.8, 0.1, 0.1]
+  split_dir: ./splits
+  split_index: 0
+  split_mode: standard
+  task: graph
+  task_type: classification_multilabel
+  to_undirected: False
+  transductive: False
+  transform: none
+  tu_simple: True
+device: cuda:0
+devices: 1
+example_arg: example
+example_group:
+  example_arg: example
+gnn:
+  act: relu
+  agg: add
+  att_final_linear: False
+  att_final_linear_bn: False
+  att_heads: 1
+  batchnorm: True
+  clear_feature: True
+  dim_edge: 96
+  dim_inner: 96
+  dropout: 0.0
+  head: graph
+  keep_edge: 0.5
+  l2norm: True
+  layer_type: generalconv
+  layers_mp: 2
+  layers_post_mp: 1
+  layers_pre_mp: 0
+  msg_direction: single
+  normalize_adj: False
+  residual: False
+  self_msg: concat
+  skip_every: 1
+  stage_type: stack
+gpu_mem: False
+gt:
+  attn:
+    O_e: True
+    act: relu
+    clamp: 5.0
+    deg_scaler: True
+    edge_enhance: True
+    full_attn: True
+    fwl: False
+    norm_e: True
+    signed_sqrt: True
+    sparse: False
+    use: True
+    use_bias: False
+  attn_dropout: 0.5
+  batch_norm: True
+  bigbird:
+    add_cross_attention: False
+    attention_type: block_sparse
+    block_size: 3
+    chunk_size_feed_forward: 0
+    hidden_act: relu
+    is_decoder: False
+    layer_norm_eps: 1e-06
+    max_position_embeddings: 128
+    num_random_blocks: 3
+    use_bias: False
+  bn_momentum: 0.1
+  bn_no_runner: False
+  dim_hidden: 96
+  dropout: 0.0
+  full_graph: True
+  gamma: 1e-05
+  layer_norm: False
+  layer_type: GritTransformer
+  layers: 4
+  n_heads: 4
+  pna_degrees: []
+  residual: True
+  update_e: True
+loss:
+  attention_improvement:
+    enable: True
+    tau: 0.2
+    weight: 1.0
+  structure_reconstruction:
+    enable: False
+    weight: 0.1
+mem:
+  inplace: False
+metric_agg: argmax
+metric_best: ap
+mlflow:
+  name: peptides-func-GRIT-RRWP
+  project: Exp
+  use: False
+model:
+  edge_decoding: dot
+  graph_pooling: mean
+  loss_fun: cross_entropy
+  match_upper: True
+  size_average: mean
+  thresh: 0.5
+  type: GritTransformer
+name_tag: 
+num_threads: 6
+num_workers: 0
+optim:
+  base_lr: 0.0003
+  batch_accumulation: 1
+  clip_grad_norm: True
+  early_stop_by_lr: False
+  early_stop_by_perf: False
+  lr_decay: 0.1
+  max_epoch: 200
+  min_lr: 0.0
+  min_lr_mode: threshold
+  momentum: 0.9
+  num_cycles: 0.5
+  num_warmup_epochs: 10
+  optimizer: adamW
+  reduce_factor: 0.5
+  schedule_patience: 10
+  scheduler: cosine_with_warmup
+  steps: [30, 60, 90]
+  stop_patience: 100
+  weight_decay: 0.0
+out_dir: results/peptides-func-GRIT-RRWP
+posenc_ElstaticSE:
+  dim_pe: 16
+  enable: False
+  kernel:
+    times: []
+    times_func: range(10)
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_EquivStableLapPE:
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: False
+  raw_norm_type: none
+posenc_HKdiagSE:
+  dim_pe: 16
+  enable: False
+  kernel:
+    times: []
+    times_func: 
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_LapPE:
+  dim_pe: 16
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: False
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_RRWP:
+  add_identity: True
+  add_node_attr: False
+  dim_pe: 16
+  enable: True
+  ksteps: 17
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+  spd: False
+posenc_RWSE:
+  dim_pe: 16
+  enable: False
+  kernel:
+    times: []
+    times_func: 
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_SignNet:
+  dim_pe: 16
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: False
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  phi_hidden_dim: 64
+  phi_out_dim: 4
+  post_layers: 0
+  raw_norm_type: none
+pretrained:
+  dir: 
+  freeze_main: False
+  reset_prediction_head: True
+print: both
+round: 5
+run_dir: results/peptides-func-GRIT-RRWP/0
+run_id: 0
+run_multiple_splits: []
+seed: 0
+share:
+  dim_in: 9
+  dim_out: 10
+  num_splits: 3
+tensorboard_agg: True
+tensorboard_each_run: True
+train:
+  auto_resume: False
+  batch_size: 16
+  ckpt_best: True
+  ckpt_clean: True
+  ckpt_period: 100
+  enable_ckpt: True
+  epoch_resume: -1
+  eval_period: 1
+  iter_per_epoch: 32
+  mode: custom
+  neighbor_sizes: [20, 15, 10, 5]
+  node_per_graph: 32
+  radius: extend
+  sample_node: False
+  sampler: full_batch
+  skip_train_eval: False
+  walk_length: 4
+val:
+  node_per_graph: 32
+  radius: extend
+  sample_node: False
+  sampler: full_batch
+view_emb: False
+wandb:
+  entity: gtransformers
+  name: 
+  project: peptides-func
+  use: False
+work_dir: /home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT
+Num parameters: 443434
+Start from epoch 0
+accuracy() missing 1 required positional argument: 'task'
+accuracy() missing 1 required positional argument: 'task'
+accuracy() missing 1 required positional argument: 'task'
+accuracy() missing 1 required positional argument: 'task'
+accuracy() missing 1 required positional argument: 'task'
+accuracy() missing 1 required positional argument: 'task'
+accuracy() missing 1 required positional argument: 'task'
+accuracy() missing 1 required positional argument: 'task'
+accuracy() missing 1 required positional argument: 'task'
+accuracy() missing 1 required positional argument: 'task'
+Traceback (most recent call last):
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/main.py", line 182, in <module>
+    train_dict[cfg.train.mode](loggers, loaders, model, optimizer,
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/grit/train/custom_train.py", line 189, in custom_train
+    perf[0].append(loggers[0].write_epoch(cur_epoch))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/grit/logger.py", line 245, in write_epoch
+    task_stats = self.classification_multilabel()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/grit/logger.py", line 146, in classification_multilabel
+    'accuracy': reformat(acc(pred_score, true)),
+                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/grit/metric_wrapper.py", line 323, in __call__
+    return self.compute(preds, target)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT/grit/metric_wrapper.py", line 311, in compute
+    x = torch.stack(metric_val)  # PyTorch<=1.9
+        ^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: stack expects a non-empty TensorList
+/home/sajan_rg/.local/lib/python3.12/site-packages/outdated/__init__.py:36: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import parse_version
+[*] Run ID 0: seed=0, split_index=0
+    Starting now: 2026-01-31 15:02:57.328247
+[*] Loaded dataset 'peptides-functional' from 'OGB':
+/home/sajan_rg/.local/lib/python3.12/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+  Data(edge_index=[2, 4773974], edge_attr=[4773974, 3], x=[2344859, 9], y=[15535, 10])
+  undirected: True
+  num graphs: 15535
+/home/sajan_rg/.local/lib/python3.12/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. The data of the dataset is already cached, so any modifications to `data` will not be reflected when accessing its elements. Clearing the cache now by removing all elements in `dataset._data_list`. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+  avg num_nodes/graph: 150
+  num node features: 9
+  num edge features: 3
+  num classes: 10
+Precomputing Positional Encoding statistics: ['RRWP'] for all graphs...
+  ...estimated to be undirected: True
+  0%|          | 0/15535 [00:00<?, ?it/s] 29%|██▊       | 4441/15535 [00:10<00:24, 444.06it/s] 59%|█████▉    | 9214/15535 [00:20<00:13, 463.61it/s] 90%|████████▉ | 13976/15535 [00:30<00:03, 469.34it/s]100%|██████████| 15535/15535 [00:33<00:00, 466.82it/s]
+Done! Took 00:00:35.78
+/home/sajan_rg/.local/lib/python3.12/site-packages/torch/cuda/__init__.py:789: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+GraphGymModule(
+  (model): GritTransformer(
+    (encoder): FeatureEncoder(
+      (node_encoder): AtomEncoder(
+        (atom_embedding_list): ModuleList(
+          (0): Embedding(119, 96)
+          (1): Embedding(5, 96)
+          (2-3): 2 x Embedding(12, 96)
+          (4): Embedding(10, 96)
+          (5-6): 2 x Embedding(6, 96)
+          (7-8): 2 x Embedding(2, 96)
+        )
+      )
+      (edge_encoder): BondEncoder(
+        (bond_embedding_list): ModuleList(
+          (0): Embedding(5, 96)
+          (1): Embedding(6, 96)
+          (2): Embedding(2, 96)
+        )
+      )
+    )
+    (rrwp_abs_encoder): RRWPLinearNodeEncoder(
+      (fc): Linear(in_features=17, out_features=96, bias=False)
+    )
+    (rrwp_rel_encoder): RRWPLinearEdgeEncoder(pad_to_full_graph=True,fill_value=0.0,Linear(in_features=17, out_features=96, bias=False))
+    (layers): Sequential(
+      (0): GritTransformerLayer(in_channels=96, out_channels=96, heads=4, residual=True)
+      [GritTransformerLayer(
+        (act): ReLU()
+        (attention): MultiHeadAttentionLayerGritSparse(
+          (dropout): Dropout(p=0.5, inplace=False)
+          (Q): Linear(in_features=96, out_features=96, bias=True)
+          (K): Linear(in_features=96, out_features=96, bias=False)
+          (E): Linear(in_features=96, out_features=192, bias=True)
+          (V): Linear(in_features=96, out_features=96, bias=False)
+          (act): ReLU()
+        )
+        (O_h): Linear(in_features=96, out_features=96, bias=True)
+        (O_e): Linear(in_features=96, out_features=96, bias=True)
+        (batch_norm1_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (batch_norm1_e): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (FFN_h_layer1): Linear(in_features=96, out_features=192, bias=True)
+        (FFN_h_layer2): Linear(in_features=192, out_features=96, bias=True)
+        (batch_norm2_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )]
+      (1): GritTransformerLayer(in_channels=96, out_channels=96, heads=4, residual=True)
+      [GritTransformerLayer(
+        (act): ReLU()
+        (attention): MultiHeadAttentionLayerGritSparse(
+          (dropout): Dropout(p=0.5, inplace=False)
+          (Q): Linear(in_features=96, out_features=96, bias=True)
+          (K): Linear(in_features=96, out_features=96, bias=False)
+          (E): Linear(in_features=96, out_features=192, bias=True)
+          (V): Linear(in_features=96, out_features=96, bias=False)
+          (act): ReLU()
+        )
+        (O_h): Linear(in_features=96, out_features=96, bias=True)
+        (O_e): Linear(in_features=96, out_features=96, bias=True)
+        (batch_norm1_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (batch_norm1_e): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (FFN_h_layer1): Linear(in_features=96, out_features=192, bias=True)
+        (FFN_h_layer2): Linear(in_features=192, out_features=96, bias=True)
+        (batch_norm2_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )]
+      (2): GritTransformerLayer(in_channels=96, out_channels=96, heads=4, residual=True)
+      [GritTransformerLayer(
+        (act): ReLU()
+        (attention): MultiHeadAttentionLayerGritSparse(
+          (dropout): Dropout(p=0.5, inplace=False)
+          (Q): Linear(in_features=96, out_features=96, bias=True)
+          (K): Linear(in_features=96, out_features=96, bias=False)
+          (E): Linear(in_features=96, out_features=192, bias=True)
+          (V): Linear(in_features=96, out_features=96, bias=False)
+          (act): ReLU()
+        )
+        (O_h): Linear(in_features=96, out_features=96, bias=True)
+        (O_e): Linear(in_features=96, out_features=96, bias=True)
+        (batch_norm1_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (batch_norm1_e): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (FFN_h_layer1): Linear(in_features=96, out_features=192, bias=True)
+        (FFN_h_layer2): Linear(in_features=192, out_features=96, bias=True)
+        (batch_norm2_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )]
+      (3): GritTransformerLayer(in_channels=96, out_channels=96, heads=4, residual=True)
+      [GritTransformerLayer(
+        (act): ReLU()
+        (attention): MultiHeadAttentionLayerGritSparse(
+          (dropout): Dropout(p=0.5, inplace=False)
+          (Q): Linear(in_features=96, out_features=96, bias=True)
+          (K): Linear(in_features=96, out_features=96, bias=False)
+          (E): Linear(in_features=96, out_features=192, bias=True)
+          (V): Linear(in_features=96, out_features=96, bias=False)
+          (act): ReLU()
+        )
+        (O_h): Linear(in_features=96, out_features=96, bias=True)
+        (O_e): Linear(in_features=96, out_features=96, bias=True)
+        (batch_norm1_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (batch_norm1_e): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (FFN_h_layer1): Linear(in_features=96, out_features=192, bias=True)
+        (FFN_h_layer2): Linear(in_features=192, out_features=96, bias=True)
+        (batch_norm2_h): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )]
+    )
+    (post_mp): GNNGraphHead(
+      (layer_post_mp): MLP(
+        (model): Sequential(
+          (0): Linear(
+            (model): Linear(96, 10, bias=True)
+          )
+        )
+      )
+    )
+  )
+)
+accelerator: cuda:0
+benchmark: False
+best_by_loss: False
+bn:
+  eps: 1e-05
+  mom: 0.1
+cfg_dest: config.yaml
+cfg_file: configs/GRIT/peptides-func-GRIT-RRWP.yaml
+custom_metrics: []
+dataset:
+  cache_load: False
+  cache_save: False
+  dir: ./datasets
+  edge_dim: 128
+  edge_encoder: True
+  edge_encoder_bn: False
+  edge_encoder_name: Bond
+  edge_encoder_num_types: 0
+  edge_message_ratio: 0.8
+  edge_negative_sampling_ratio: 1.0
+  edge_train_mode: all
+  encoder: True
+  encoder_bn: True
+  encoder_dim: 128
+  encoder_name: db
+  format: OGB
+  label_column: none
+  label_table: none
+  location: local
+  name: peptides-functional
+  node_encoder: True
+  node_encoder_bn: False
+  node_encoder_name: Atom
+  node_encoder_num_types: 0
+  pe_transform_on_the_fly: False
+  remove_feature: False
+  resample_disjoint: False
+  resample_negative: False
+  shuffle_split: True
+  slic_compactness: 10
+  split: [0.8, 0.1, 0.1]
+  split_dir: ./splits
+  split_index: 0
+  split_mode: standard
+  task: graph
+  task_type: classification_multilabel
+  to_undirected: False
+  transductive: False
+  transform: none
+  tu_simple: True
+device: cuda:0
+devices: 1
+example_arg: example
+example_group:
+  example_arg: example
+gnn:
+  act: relu
+  agg: add
+  att_final_linear: False
+  att_final_linear_bn: False
+  att_heads: 1
+  batchnorm: True
+  clear_feature: True
+  dim_edge: 96
+  dim_inner: 96
+  dropout: 0.0
+  head: graph
+  keep_edge: 0.5
+  l2norm: True
+  layer_type: generalconv
+  layers_mp: 2
+  layers_post_mp: 1
+  layers_pre_mp: 0
+  msg_direction: single
+  normalize_adj: False
+  residual: False
+  self_msg: concat
+  skip_every: 1
+  stage_type: stack
+gpu_mem: False
+gt:
+  attn:
+    O_e: True
+    act: relu
+    clamp: 5.0
+    deg_scaler: True
+    edge_enhance: True
+    full_attn: True
+    fwl: False
+    norm_e: True
+    signed_sqrt: True
+    sparse: False
+    use: True
+    use_bias: False
+  attn_dropout: 0.5
+  batch_norm: True
+  bigbird:
+    add_cross_attention: False
+    attention_type: block_sparse
+    block_size: 3
+    chunk_size_feed_forward: 0
+    hidden_act: relu
+    is_decoder: False
+    layer_norm_eps: 1e-06
+    max_position_embeddings: 128
+    num_random_blocks: 3
+    use_bias: False
+  bn_momentum: 0.1
+  bn_no_runner: False
+  dim_hidden: 96
+  dropout: 0.0
+  full_graph: True
+  gamma: 1e-05
+  layer_norm: False
+  layer_type: GritTransformer
+  layers: 4
+  n_heads: 4
+  pna_degrees: []
+  residual: True
+  update_e: True
+loss:
+  attention_improvement:
+    enable: True
+    tau: 0.2
+    weight: 1.0
+  structure_reconstruction:
+    enable: False
+    weight: 0.1
+mem:
+  inplace: False
+metric_agg: argmax
+metric_best: ap
+mlflow:
+  name: peptides-func-GRIT-RRWP
+  project: Exp
+  use: False
+model:
+  edge_decoding: dot
+  graph_pooling: mean
+  loss_fun: cross_entropy
+  match_upper: True
+  size_average: mean
+  thresh: 0.5
+  type: GritTransformer
+name_tag: 
+num_threads: 6
+num_workers: 0
+optim:
+  base_lr: 0.0003
+  batch_accumulation: 1
+  clip_grad_norm: True
+  early_stop_by_lr: False
+  early_stop_by_perf: False
+  lr_decay: 0.1
+  max_epoch: 200
+  min_lr: 0.0
+  min_lr_mode: threshold
+  momentum: 0.9
+  num_cycles: 0.5
+  num_warmup_epochs: 10
+  optimizer: adamW
+  reduce_factor: 0.5
+  schedule_patience: 10
+  scheduler: cosine_with_warmup
+  steps: [30, 60, 90]
+  stop_patience: 100
+  weight_decay: 0.0
+out_dir: results/peptides-func-GRIT-RRWP
+posenc_ElstaticSE:
+  dim_pe: 16
+  enable: False
+  kernel:
+    times: []
+    times_func: range(10)
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_EquivStableLapPE:
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: False
+  raw_norm_type: none
+posenc_HKdiagSE:
+  dim_pe: 16
+  enable: False
+  kernel:
+    times: []
+    times_func: 
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_LapPE:
+  dim_pe: 16
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: False
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_RRWP:
+  add_identity: True
+  add_node_attr: False
+  dim_pe: 16
+  enable: True
+  ksteps: 17
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+  spd: False
+posenc_RWSE:
+  dim_pe: 16
+  enable: False
+  kernel:
+    times: []
+    times_func: 
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  post_layers: 0
+  raw_norm_type: none
+posenc_SignNet:
+  dim_pe: 16
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: False
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: False
+  phi_hidden_dim: 64
+  phi_out_dim: 4
+  post_layers: 0
+  raw_norm_type: none
+pretrained:
+  dir: 
+  freeze_main: False
+  reset_prediction_head: True
+print: both
+round: 5
+run_dir: results/peptides-func-GRIT-RRWP/0
+run_id: 0
+run_multiple_splits: []
+seed: 0
+share:
+  dim_in: 9
+  dim_out: 10
+  num_splits: 3
+tensorboard_agg: True
+tensorboard_each_run: True
+train:
+  auto_resume: False
+  batch_size: 16
+  ckpt_best: True
+  ckpt_clean: True
+  ckpt_period: 100
+  enable_ckpt: True
+  epoch_resume: -1
+  eval_period: 1
+  iter_per_epoch: 32
+  mode: custom
+  neighbor_sizes: [20, 15, 10, 5]
+  node_per_graph: 32
+  radius: extend
+  sample_node: False
+  sampler: full_batch
+  skip_train_eval: False
+  walk_length: 4
+val:
+  node_per_graph: 32
+  radius: extend
+  sample_node: False
+  sampler: full_batch
+view_emb: False
+wandb:
+  entity: gtransformers
+  name: 
+  project: peptides-func
+  use: False
+work_dir: /home/sajan_rg/graphormer_eval/new_experiments/sota_architectures/GRIT
+Num parameters: 443434
+Start from epoch 0
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+train: {'epoch': 0, 'time_epoch': 232.05891, 'eta': 46179.72359, 'eta_hours': 12.8277, 'loss': 5.03832358, 'lr': 0.0, 'params': 443434, 'time_iter': 0.34126, 'accuracy': 0.16463, 'ap': nan, 'auc': nan}
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+...computing epoch stats took: 0.04s
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+val: {'epoch': 0, 'time_epoch': 12.23017, 'loss': 0.69745987, 'lr': 0, 'params': 443434, 'time_iter': 0.08377, 'accuracy': 0.16482, 'ap': nan, 'auc': nan}
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+...computing epoch stats took: 0.01s
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+average_precision() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+auroc() got an unexpected keyword argument 'pos_label'
+test: {'epoch': 0, 'time_epoch': 12.33895, 'loss': 0.69788165, 'lr': 0, 'params': 443434, 'time_iter': 0.08451, 'accuracy': 0.16465, 'ap': nan, 'auc': nan}
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+...computing epoch stats took: 0.01s
+> Epoch 0: took 256.7s (avg 256.7s) | Best so far: epoch 0	train_loss: 5.0383 train_ap: nan	val_loss: 0.6975 val_ap: nan	test_loss: 0.6979 test_ap: nan
+-----------------------------------------------------------

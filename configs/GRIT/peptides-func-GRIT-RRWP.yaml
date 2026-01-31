@@ -69,3 +69,8 @@ optim:
   max_epoch: 200
   scheduler: cosine_with_warmup
   num_warmup_epochs: 10
+loss:
+  attention_improvement:
+    enable: True  # Set to False to disable
+    weight: 1.0   # Weight for this loss component
+    tau: 0.2      # Temperature for sigmoid

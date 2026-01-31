@@ -69,8 +69,7 @@ class CustomLogger(Logger):
         if true.shape[0] < 1e7:  # AUROC computation for very large datasets is too slow.
             # TorchMetrics AUROC on GPU if available.
             auroc_score = auroc(pred_score.to(torch.device(cfg.device)),
-                                true.to(torch.device(cfg.device)),
-                                pos_label=1)
+                                true.to(torch.device(cfg.device)))
             if self.test_scores:
                 # SK-learn version.
                 try:
@@ -135,13 +134,11 @@ class CustomLogger(Logger):
                             threshold=0.,
                             cast_to_int=True)
         ap = MetricWrapper(metric='averageprecision',
-                           target_nan_mask='ignore-mean-label',
-                           pos_label=1,
-                           cast_to_int=True)
+                   target_nan_mask='ignore-mean-label',
+                   cast_to_int=True)
         auroc = MetricWrapper(metric='auroc',
-                              target_nan_mask='ignore-mean-label',
-                              pos_label=1,
-                              cast_to_int=True)
+                      target_nan_mask='ignore-mean-label',
+                      cast_to_int=True)
         results = {
             'accuracy': reformat(acc(pred_score, true)),
             'ap': reformat(ap(pred_score, true)),

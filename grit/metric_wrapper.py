@@ -236,6 +236,43 @@ class MetricWrapper:
 
         self.metric = METRICS_DICT[metric] if isinstance(metric, str) else metric
 
+        # Wrap torchmetrics.functional.accuracy to be backward compatible
+        # with older signatures that didn't require the `task` argument.
+        try:
+            metric_name = self.metric.__name__
+        except Exception:
+            metric_name = None
+
+        if metric_name == "accuracy":
+            def _accuracy_adapter(preds, target, **kwargs):
+                kw = kwargs.copy()
+                if "task" not in kw:
+                    # Infer task from prediction shape: if last dim >1 -> multiclass
+                    if preds.ndim > 1 and preds.shape[-1] > 1:
+                        kw["task"] = "multiclass"
+                    else:
+                        kw["task"] = "binary"
+                return accuracy(preds, target, **kw)
+
+            self.metric = _accuracy_adapter
+
+        # Wrap torchmetrics.functional.average_precision and auroc to add
+        # the required `task` argument when not provided (backwards compat).
+        if metric_name in ("average_precision", "auroc"):
+            orig_metric = self.metric
+
+            def _metric_task_adapter(preds, target, **kwargs):
+                kw = kwargs.copy()
+                if "task" not in kw:
+                    # Infer task from prediction shape: if last dim >1 -> multiclass
+                    if preds.ndim > 1 and preds.shape[-1] > 1:
+                        kw["task"] = "multiclass"
+                    else:
+                        kw["task"] = "binary"
+                return orig_metric(preds, target, **kw)
+
+            self.metric = _metric_task_adapter
+
         self.thresholder = None
         if threshold_kwargs is not None:
             self.thresholder = Thresholder(**threshold_kwargs)
@@ -305,6 +342,11 @@ class MetricWrapper:
                     else:
                         print(e)
             warnings.filterwarnings("default")
+
+            # If no valid per-column metric was produced, return NaN instead
+            # of calling torch.stack on an empty list which raises.
+            if len(metric_val) == 0:
+                return torch.tensor(float("nan"))
 
             # Average the metric
             # metric_val = torch.nanmean(torch.stack(metric_val))  # PyTorch1.10
