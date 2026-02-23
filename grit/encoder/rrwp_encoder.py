@@ -5,15 +5,13 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 from ogb.utils.features import get_bond_feature_dims
-import torch_sparse
+from torch_geometric.utils import remove_self_loops, add_remaining_self_loops, add_self_loops, coalesce as pyg_coalesce
 
 import torch_geometric as pyg
 from torch_geometric.graphgym.register import (
     register_edge_encoder,
     register_node_encoder,
 )
-
-from torch_geometric.utils import remove_self_loops, add_remaining_self_loops, add_self_loops
 from torch_scatter import scatter
 import warnings
 
@@ -155,11 +153,11 @@ class RRWPLinearEdgeEncoder(torch.nn.Module):
             # edge_index, edge_attr = add_remaining_self_loops(edge_index, edge_attr, num_nodes=batch.num_nodes, fill_value=0.)
             edge_index, edge_attr = add_self_loops(edge_index, edge_attr, num_nodes=batch.num_nodes, fill_value=0.)
 
-            out_idx, out_val = torch_sparse.coalesce(
+            out_idx, out_val = pyg_coalesce(
                 torch.cat([edge_index, rrwp_idx], dim=1),
                 torch.cat([edge_attr, rrwp_val], dim=0),
-                batch.num_nodes, batch.num_nodes,
-                op="add"
+                num_nodes=batch.num_nodes,
+                reduce="add"
             )
 
 
@@ -169,9 +167,9 @@ class RRWPLinearEdgeEncoder(torch.nn.Module):
             # zero padding to fully-connected graphs
             out_idx = torch.cat([out_idx, edge_index_full], dim=1)
             out_val = torch.cat([out_val, edge_attr_pad], dim=0)
-            out_idx, out_val = torch_sparse.coalesce(
-               out_idx, out_val, batch.num_nodes, batch.num_nodes,
-               op="add"
+            out_idx, out_val = pyg_coalesce(
+               out_idx, out_val, num_nodes=batch.num_nodes,
+               reduce="add"
             )
 
         if self.batchnorm:
@@ -246,11 +244,11 @@ class RRWPLinearEdgeMaskedEncoder(torch.nn.Module):
         if self.overwrite_old_attr:
             out_idx, out_val = rrwp_idx, rrwp_val
         else:
-            out_idx, out_val = torch_sparse.coalesce(
+            out_idx, out_val = pyg_coalesce(
                 torch.cat([edge_index, rrwp_idx], dim=1),
                 torch.cat([edge_attr, rrwp_val], dim=0),
-                batch.num_nodes, batch.num_nodes,
-                op="add"
+                num_nodes=batch.num_nodes,
+                reduce="add"
             )
 
         if mask_index is not None:
@@ -258,17 +256,17 @@ class RRWPLinearEdgeMaskedEncoder(torch.nn.Module):
             mask_val = mask_index.new_full((mask_index.size(1), ), 1)
             mask_comp = mask_index.new_full((out_idx.size(1), ), 0)
             mask_pad = mask_index.new_full((mask_index.size(1), out_val.size(1)), 0)
-            _, masking = torch_sparse.coalesce(
+            _, masking = pyg_coalesce(
                 torch.cat([mask_index, out_idx], dim=1),
                 torch.cat([mask_val, mask_comp], dim=0),
-                m=num_nodes, n=num_nodes,
-                op="max",
+                num_nodes=num_nodes,
+                reduce="max",
             )
-            out_idx, out_val = torch_sparse.coalesce(
+            out_idx, out_val = pyg_coalesce(
                 torch.cat([mask_index, out_idx], dim=1),
                 torch.cat([mask_pad, out_val], dim=0),
-                batch.num_nodes, batch.num_nodes,
-                op="add"
+                num_nodes=batch.num_nodes,
+                reduce="add"
             )
             masking = masking.type(torch.bool)
             out_idx, out_val = out_idx[:, masking], out_val[masking]
@@ -315,9 +313,9 @@ class PadToFullGraphEdgeEncoder(torch.nn.Module):
             # zero padding to fully-connected graphs
             out_idx = torch.cat([out_idx, edge_index_full], dim=1)
             out_val = torch.cat([out_val, edge_attr_pad], dim=0)
-            out_idx, out_val = torch_sparse.coalesce(
-                out_idx, out_val, batch.num_nodes, batch.num_nodes,
-                op="add"
+            out_idx, out_val = pyg_coalesce(
+                out_idx, out_val, num_nodes=batch.num_nodes,
+                reduce="add"
             )
 
         batch.edge_index, batch.edge_attr = out_idx, out_val

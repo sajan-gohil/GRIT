@@ -1,5 +1,4 @@
 import torch
-from torch_sparse import SparseTensor
 
 
 mat = torch.rand(30, 30, 20)
@@ -14,7 +13,9 @@ row, col, hop, val = [], [], [], []
 
 for i in range(mat.size(-1)):
     a = mat[:, :, i]
-    row_t, col_t, val_t = SparseTensor.from_dense(a, has_value=True).coo()
+    mask = a != 0
+    row_t, col_t = mask.nonzero(as_tuple=True)
+    val_t = a[row_t, col_t]
     row.append(row_t)
     col.append(col_t)
     val.append(val_t)

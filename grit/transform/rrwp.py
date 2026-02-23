@@ -13,10 +13,9 @@ from torch_geometric.graphgym.config import cfg
 from torch_geometric.utils import (
     get_laplacian,
     get_self_loop_attr,
+    to_dense_adj,
     to_scipy_sparse_matrix,
 )
-import torch_sparse
-from torch_sparse import SparseTensor
 
 
 def add_node_attr(data: Data, value: Any,
@@ -48,16 +47,13 @@ def add_full_rrwp(data,
     num_nodes = data.num_nodes
     edge_index, edge_weight = data.edge_index, data.edge_weight
 
-    adj = SparseTensor.from_edge_index(edge_index, edge_weight,
-                                       sparse_sizes=(num_nodes, num_nodes),
-                                       )
+    adj = to_dense_adj(edge_index, edge_attr=edge_weight, max_num_nodes=num_nodes)[0].to(device)
 
     # Compute D^{-1} A:
     deg = adj.sum(dim=1)
-    deg_inv = 1.0 / adj.sum(dim=1)
+    deg_inv = 1.0 / deg
     deg_inv[deg_inv == float('inf')] = 0
     adj = adj * deg_inv.view(-1, 1)
-    adj = adj.to_dense()
 
     pe_list = []
     i = 0
@@ -77,8 +73,9 @@ def add_full_rrwp(data,
 
     abs_pe = pe.diagonal().transpose(0, 1) # n x k
 
-    rel_pe = SparseTensor.from_dense(pe, has_value=True)
-    rel_pe_row, rel_pe_col, rel_pe_val = rel_pe.coo()
+    mask = (pe != 0).any(dim=-1)
+    rel_pe_row, rel_pe_col = mask.nonzero(as_tuple=True)
+    rel_pe_val = pe[rel_pe_row, rel_pe_col]
     # rel_pe_idx = torch.stack([rel_pe_row, rel_pe_col], dim=0)
     rel_pe_idx = torch.stack([rel_pe_col, rel_pe_row], dim=0)
     # the framework of GRIT performing right-mul while adj is row-normalized, 
