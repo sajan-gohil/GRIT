@@ -6,7 +6,7 @@ import torch.nn.functional as F
 import torch_geometric as pyg
 from torch_geometric.data import Data, HeteroData
 from torch_geometric.transforms import BaseTransform
-from torch_scatter import scatter, scatter_add, scatter_max
+from grit.scatter_utils import scatter, scatter_add, scatter_max
 
 from torch_geometric.graphgym.config import cfg
 

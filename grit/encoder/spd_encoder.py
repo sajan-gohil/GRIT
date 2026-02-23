@@ -11,7 +11,7 @@ from torch_geometric.graphgym.register import (
     register_edge_encoder,
     register_node_encoder,
 )
-from torch_scatter import scatter
+from grit.scatter_utils import scatter
 import warnings
 
 def full_edge_index(edge_index, batch=None, total_nodes=None):

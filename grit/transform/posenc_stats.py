@@ -7,7 +7,7 @@ from numpy.linalg import eigvals
 from torch_geometric.utils import (get_laplacian, to_scipy_sparse_matrix,
                                    to_undirected, to_dense_adj)
 from torch_geometric.utils.num_nodes import maybe_num_nodes
-from torch_scatter import scatter_add
+from grit.scatter_utils import scatter_add
 from functools import partial
 from .rrwp import add_full_rrwp
 

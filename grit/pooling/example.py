@@ -1,5 +1,5 @@
 from torch_geometric.graphgym.register import register_pooling
-from torch_scatter import scatter
+from grit.scatter_utils import scatter
 
 
 @register_pooling('example')

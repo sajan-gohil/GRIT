@@ -5,7 +5,7 @@ import torch
 from torch import Tensor
 from torch_geometric.utils import degree
 from torch_geometric.utils import remove_self_loops
-from torch_scatter import scatter
+from grit.scatter_utils import scatter
 from yacs.config import CfgNode
 
 

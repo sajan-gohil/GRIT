@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch_geometric as pyg
-from torch_scatter import scatter
+from grit.scatter_utils import scatter
 
 import torch_geometric.graphgym.register as register
 from torch_geometric.graphgym import cfg

@@ -5,7 +5,7 @@ import torch_geometric.graphgym.register as register
 import torch_geometric.nn as pyg_nn
 from torch_geometric.graphgym.models.layer import LayerConfig
 from torch_geometric.graphgym.register import register_layer
-from torch_scatter import scatter
+from grit.scatter_utils import scatter
 
 
 class GatedGCNLayer(pyg_nn.conv.MessagePassing):
