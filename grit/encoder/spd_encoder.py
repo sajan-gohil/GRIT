@@ -5,14 +5,12 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 from ogb.utils.features import get_bond_feature_dims
-import torch_sparse
+from torch_geometric.utils import remove_self_loops, coalesce as pyg_coalesce
 
 from torch_geometric.graphgym.register import (
     register_edge_encoder,
     register_node_encoder,
 )
-
-from torch_geometric.utils import remove_self_loops
 from torch_scatter import scatter
 import warnings
 
@@ -122,9 +120,9 @@ class SPDEdgeEncoder(torch.nn.Module):
             # zero padding to fully-connected graphs
             out_idx = torch.cat([out_idx, edge_index_full], dim=1)
             out_val = torch.cat([out_val, edge_attr_pad], dim=0)
-            out_idx, out_val = torch_sparse.coalesce(
-               out_idx, out_val, batch.num_nodes, batch.num_nodes,
-               op="add"
+            out_idx, out_val = pyg_coalesce(
+               out_idx, out_val, num_nodes=batch.num_nodes,
+               reduce="add"
             )
 
         if self.batchnorm:
